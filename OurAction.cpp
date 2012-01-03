@@ -8,6 +8,7 @@ OurAction::OurAction()
 	this->isAttack = false;
 	this->audioFrames = 0;
 	this->numOfFxFrames = 0;
+	this->hasImg = false;
 	//this->type = NULL;
 }
 

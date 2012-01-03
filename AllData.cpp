@@ -16,6 +16,9 @@ AUDIOid AllAudio::s03_pose25 = 0;
 AUDIOid AllAudio::eat = 0;
 AUDIOid AllAudio::se_select = 0;
 
+//Img
+char* AllImg::ImgDirAddr = 0;
+
 //FX
 char* AllFx::Attack01 = "Attack01";
 char* AllFx::LyubuWeapon1 = "LyubuWeapon1";
@@ -158,8 +161,10 @@ void loadAll( WORLDid gID )
 	AllAudio::se_select = gw.CreateAudio();
 	audio.Object(AllAudio::se_select);
 	audio.Load("se_select");
-
+	//fx
 	AllFx::gID = gID;
-
 	FXcenter::initial();
+	//img
+	AllImg::ImgDirAddr = "Data\\NTU4\\Image";
+
 }

@@ -68,7 +68,10 @@ public:
 	//FX frame
 	int numOfFxFrames;
 	OurFxFrame **fxFrames;
-
+	//img
+	bool hasImg;
+	char *Img;
+	//construct
 	OurAction();	
 	OurAction(int priority,	float play_speed,	float frames_num,	ACTIONid actID,	char *type);
 	/*

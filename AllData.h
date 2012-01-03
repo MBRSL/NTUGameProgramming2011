@@ -60,5 +60,9 @@ public:
 	static void playAllFX( float skip );
 };
 
-
+class AllImg
+{
+public:
+	static char* ImgDirAddr;
+};
 #endif

@@ -26,9 +26,11 @@ public:
 	void ourPlayAction();
 	bool sendAction(OurAction*);
 	OurAction* getCurrentAction();
+	virtual void actionChangeSignal( OurAction *last_action, OurAction *current_action ) = 0;
+	//attack key
 	OurFrame* getKeyFrame();
 	float getCurrentFrame();
-
+	//fx & audio
 	bool playActionAudio();
 	bool playActionFx();
 };

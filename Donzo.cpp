@@ -6,7 +6,7 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 	FnWorld gw;
 	FnScene scene;
 
-	HP_MAX = 9000;
+	HP_MAX = 2000;
 	HP = HP_MAX;
 
 	pos_begin[0]=3469.0;

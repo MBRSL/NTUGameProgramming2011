@@ -23,7 +23,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	//2D
 	FnSprite sp;
 	FnScene scene2D;
-	gw.SetTexturePath("Data");
+	gw.SetTexturePath(AllImg::ImgDirAddr);
 
 	s2D = gw.CreateScene(1);
 	scene2D.Object(s2D);
@@ -50,6 +50,17 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	sp.SetRectPosition(lifebar_x, lifebar_y, 0);
 
 	lifebar.Object(lifebarID);
+		//skill
+	skill_length=400;
+	skill_height=140;
+	skill_x=200;
+	skill_y=450;
+	skillID = scene2D.CreateSprite();
+	sp.Object(skillID);
+	//sp.SetRectArea(NULL, skill_length, skill_height, NULL, "skill1", 0, TRUE, 0, 0, 0);
+	//sp.SetRectPosition(skill_x, skill_y, 0);
+	
+	skill.Object(skillID);
 	//2D
 
 
@@ -66,7 +77,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	actor.Object( aID );
 	//IDLE
 	ourIdleAction = new OurAction();
-	ourIdleAction->actID = actor.GetBodyAction(NULL, "Idle");
+	ourIdleAction->actID = actor.GetBodyAction(NULL, "CombatIdle");
 	ourIdleAction->frames_num = 0;
 	ourIdleAction->play_speed = 1;
 	ourIdleAction->priority = 0;
@@ -225,25 +236,8 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	ourHeavyAttack1Action->keyFrames[1]->plus_angle = 80;
 	ourHeavyAttack1Action->keyFrames[1]->valid_dis = 260;
 	ourHeavyAttack1Action->keyFrames[1]->damage_pt = 80;
-/*
-	ourHeavyAttack2Action = new OurAction();
-	ourHeavyAttack2Action->actID = actor.GetBodyAction(NULL, "HeavyAttack2");
-	ourHeavyAttack2Action->isAttack = true;
-	ourHeavyAttack2Action->frames_num = 72;
-	ourHeavyAttack2Action->play_speed = 1.2;
-	ourHeavyAttack2Action->priority = ourAttack2Action->priority + 10;
-	ourHeavyAttack2Action->type.value = LyubuAction::ACTION_HEAVY_ATTACK2();
-	ourHeavyAttack2Action->combo_able_frame_start = 22;
-	ourHeavyAttack2Action->combo_able_frame_end = 40;
-	ourHeavyAttack2Action->numOfKeyFrames = 1;
-	ourHeavyAttack2Action->keyFrames = new OurFrame*[1];
-	ourHeavyAttack2Action->keyFrames[0] = new OurFrame;
-	ourHeavyAttack2Action->keyFrames[0]->frameNO = 22;
-	ourHeavyAttack2Action->keyFrames[0]->start_angle = 0;
-	ourHeavyAttack2Action->keyFrames[0]->plus_angle = 180;
-	ourHeavyAttack2Action->keyFrames[0]->valid_dis = 220;
-	ourHeavyAttack2Action->keyFrames[0]->damage_pt = 60;
-*/
+	ourHeavyAttack1Action->hasImg = true;
+	ourHeavyAttack1Action->Img = "skill1";
 	
 	ourHeavyAttack2Action = new OurAction();
 	ourHeavyAttack2Action->actID = actor.GetBodyAction(NULL, "HeavyAttack2");
@@ -268,6 +262,8 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	ourHeavyAttack2Action->keyFrames[1]->plus_angle = 180;
 	ourHeavyAttack2Action->keyFrames[1]->valid_dis = 270;
 	ourHeavyAttack2Action->keyFrames[1]->damage_pt = 60;
+	ourHeavyAttack2Action->hasImg = true;
+	ourHeavyAttack2Action->Img = "skill2";
 
 	ourHeavyAttack3Action = new OurAction();
 	ourHeavyAttack3Action->actID = actor.GetBodyAction(NULL, "HeavyAttack3");
@@ -286,6 +282,9 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	ourHeavyAttack3Action->keyFrames[0]->plus_angle = 180;
 	ourHeavyAttack3Action->keyFrames[0]->valid_dis = 190;
 	ourHeavyAttack3Action->keyFrames[0]->damage_pt = 60;
+	ourHeavyAttack3Action->hasImg = true;
+	ourHeavyAttack3Action->Img = "skill3";
+
 	//Damaged
 	ourHeavyDamagedAction = new OurAction();
 	ourHeavyDamagedAction->actID = actor.GetBodyAction(NULL, "HeavyDamaged");
@@ -416,7 +415,22 @@ void Lyubu::damaged( int attack_pt, ACTORid attacker, float angle )
 
 	//lifebar
 	{
-		gw.SetTexturePath("Data");
+		gw.SetTexturePath(AllImg::ImgDirAddr);
 		lifebar.SetRectArea(NULL, lifebar_length*HP/HP_MAX, lifebar_height, NULL, "lifebar1", 0, TRUE, 0, 0, 0);  
+	}
+}
+
+void Lyubu::actionChangeSignal( OurAction *last_action, OurAction *current_action )
+{
+	if( !current_action->hasImg )
+	{
+		skill.Show(FALSE);
+	}
+	else
+	{
+		gw.SetTexturePath(AllImg::ImgDirAddr);
+		skill.SetRectArea(NULL, skill_length, skill_height, NULL, current_action->Img, 0, TRUE, 0, 0, 0);
+		skill.SetRectPosition(skill_x, skill_y, 0);
+		skill.Show(TRUE);
 	}
 }

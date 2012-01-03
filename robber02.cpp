@@ -10,7 +10,7 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	FnWorld gw;
 	FnScene scene;
 
-	HP_MAX = 4500;
+	HP_MAX = 900;
 	HP = HP_MAX;
 
 	pos_begin[0]=3550.0;
