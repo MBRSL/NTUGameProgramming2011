@@ -22,6 +22,7 @@ char* AllImg::ImgDirAddr = 0;
 //FX
 char* AllFx::Attack01 = "Attack01";
 char* AllFx::LyubuWeapon1 = "LyubuWeapon1";
+char* AllFx::LyubuWeapon3 = "LyubuWeapon3";
 char* AllFx::SmallHurt01 = "SmallHurt01";
 char* AllFx::BigHurt01 = "BigHurt01";
 char* AllFx::BigHurt02 = "BigHurt02";
@@ -34,6 +35,7 @@ char* AllFx::smoke = "smoke";
 char* AllFx::smoke1 = "smoke1";
 char* AllFx::WeaponThounder = "WeaponThounder";
 char* AllFx::blood2 = "blood2";
+char* AllFx::DonzoHeavy3 = "DonzoHeavy3";
 WORLDid AllFx::gID = 0;
 
 eF3DFX* AllFx::getFX(char*filename, SCENEid sID){
@@ -85,7 +87,7 @@ void FXcenter::playAllFX( float skip )
 		for( int i=queue_start ; i<queue_end ; i++ )
 		{
 			beOK = queue[i]->Play(skip);
-			if( !beOK )
+			if( beOK == FALSE )
 			{
 				delete queue[i];
 				queue[i] = queue[queue_end-1];
@@ -97,6 +99,34 @@ void FXcenter::playAllFX( float skip )
 	}
 }
 
+//music
+char* AllMusic::BgmDirAddr = "Data\\NTU4\\Media";
+FnMedia* AllMusic::mP = NULL;
+MEDIAid AllMusic::current_music = 0;
+MEDIAid AllMusic::stage = 0;
+MEDIAid AllMusic::warning = 0;
+MEDIAid AllMusic::win = 0;
+void AllMusic::initial( WORLDid gID )
+{
+	FnWorld gw;
+	gw.Object(gID);
+
+	HWND hwnd = FyGetWindowHandle(gw.Object());
+	mP = new FnMedia;
+
+	FyBeginMedia(BgmDirAddr, 1);
+	stage = FyCreateMediaPlayer(0, "stage", 0, 0, 0, 0);
+	warning = FyCreateMediaPlayer(0, "warning", 0, 0, 0, 0);
+	win = FyCreateMediaPlayer(0, "win", 0, 0, 0, 0);
+}
+
+void AllMusic::play( MEDIAid bgm, int type )
+{
+	mP->Stop();
+	current_music = bgm;
+	mP->Object(bgm);
+	mP->Play(type);
+}
 
 //method
 void loadAll( WORLDid gID )
@@ -166,5 +196,6 @@ void loadAll( WORLDid gID )
 	FXcenter::initial();
 	//img
 	AllImg::ImgDirAddr = "Data\\NTU4\\Image";
-
+	//music
+	AllMusic::initial(gID);
 }

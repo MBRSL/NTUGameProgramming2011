@@ -2,6 +2,7 @@
 #define _ALLDATA_H_
 #include "TheFlyWin32.h"
 #include "FyFx.h"
+#include "FyMedia.h"
 
 void loadAll( WORLDid gID );
 
@@ -31,6 +32,7 @@ public:
 	static eF3DFX* getFX(char *filename, SCENEid sid);
 	static char* Attack01;
 	static char* LyubuWeapon1;
+	static char* LyubuWeapon3;
 	static char* SmallHurt01;
 	static char* BigHurt01;
 	static char* BigHurt02;
@@ -43,6 +45,7 @@ public:
 	static char* smoke1;
 	static char* WeaponThounder;
 	static char* blood2;
+	static char* DonzoHeavy3;
 private:
 	
 };
@@ -64,5 +67,20 @@ class AllImg
 {
 public:
 	static char* ImgDirAddr;
+};
+
+class AllMusic
+{
+public:
+	static FnMedia *mP;
+	static char* BgmDirAddr;
+	static MEDIAid current_music;
+	//music
+	static MEDIAid stage;
+	static MEDIAid warning;
+	static MEDIAid win;
+
+	static void play( MEDIAid bgm, int type );
+	static void initial( WORLDid gID );
 };
 #endif

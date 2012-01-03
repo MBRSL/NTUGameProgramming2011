@@ -1,12 +1,12 @@
 #include "Donzo.h"
 #include "function.h"
-const float Donzo::ATTACK_RATE = 0.01f;
+const float Donzo::ATTACK_RATE = 0.10f;
 Donzo::Donzo( WORLDid gID, SCENEid sID )
 {
 	FnWorld gw;
 	FnScene scene;
 
-	HP_MAX = 2000;
+	HP_MAX = 1000;
 	HP = HP_MAX;
 
 	pos_begin[0]=3469.0;
@@ -95,6 +95,7 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 	ourHeavyAttack1Action->keyFrames[2]->valid_dis = 200;
 	ourHeavyAttack1Action->keyFrames[2]->damage_pt = 80;
 
+	//ourHeavyAttack2Action
 	ourHeavyAttack2Action = new OurAction();
 	ourHeavyAttack2Action->actID = actor.GetBodyAction(NULL, "HeavyAttack");
 	ourHeavyAttack2Action->isAttack = true;
@@ -102,6 +103,7 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 	ourHeavyAttack2Action->play_speed = 1;
 	ourHeavyAttack2Action->priority = ourAttack1Action->priority + 10;
 	ourHeavyAttack2Action->type.value = Action_type::ACTION_ATTACK();
+		//key
 	ourHeavyAttack2Action->numOfKeyFrames = 2;
 	ourHeavyAttack2Action->keyFrames = new OurFrame*[2];
 	ourHeavyAttack2Action->keyFrames[0] = new OurFrame;
@@ -116,6 +118,12 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 	ourHeavyAttack2Action->keyFrames[1]->plus_angle = 180;
 	ourHeavyAttack2Action->keyFrames[1]->valid_dis = 200;
 	ourHeavyAttack2Action->keyFrames[1]->damage_pt = 120;
+		//fx
+	ourHeavyAttack2Action->numOfFxFrames = 1;
+	ourHeavyAttack2Action->fxFrames = new OurFxFrame*[1];
+	ourHeavyAttack2Action->fxFrames[0] = new OurFxFrame;
+	ourHeavyAttack2Action->fxFrames[0]->frameNO = 1;
+	ourHeavyAttack2Action->fxFrames[0]->fxName = AllFx::DonzoHeavy3;
 
 	//DamageL
 	ourDamageLAction = new OurAction();
@@ -217,8 +225,12 @@ void Donzo::damaged( int attack_pt, ACTORid attacker, float angle )
 {
 	HP -= attack_pt;
 	bloodAdjust();
-	if( HP < 0 )
+	if( HP < 0 && current_OurAction->type!=Action_type::ACTION_DIE() )
+	{
+		HP = 0;
 		sendAction(ourDieAction);
+		AllMusic::play( AllMusic::win, ONCE );
+	}
 	else{
 		if( angle < 180 )
 			sendAction(ourDamageHAction);

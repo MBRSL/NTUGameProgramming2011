@@ -3,14 +3,14 @@
 #include "OurActor.h"
 #include "OurAction.h"
 
-const float Robber02::ATTACK_RATE = 0.1f;
+const float Robber02::ATTACK_RATE = 0.15f;
 
 Robber02::Robber02( WORLDid gID, SCENEid sID )
 {
 	FnWorld gw;
 	FnScene scene;
 
-	HP_MAX = 900;
+	HP_MAX = 400;
 	HP = HP_MAX;
 
 	pos_begin[0]=3550.0;

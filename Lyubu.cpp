@@ -223,6 +223,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	ourHeavyAttack1Action->combo_able_frame_start = 40;
 	ourHeavyAttack1Action->combo_able_frame_end = 60;
 	ourHeavyAttack1Action->numOfKeyFrames = 2;
+		//key
 	ourHeavyAttack1Action->keyFrames = new OurFrame*[2];
 	ourHeavyAttack1Action->keyFrames[0] = new OurFrame;
 	ourHeavyAttack1Action->keyFrames[0]->frameNO = 21;
@@ -236,6 +237,13 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	ourHeavyAttack1Action->keyFrames[1]->plus_angle = 80;
 	ourHeavyAttack1Action->keyFrames[1]->valid_dis = 260;
 	ourHeavyAttack1Action->keyFrames[1]->damage_pt = 80;
+		//fx
+	ourHeavyAttack1Action->numOfFxFrames = 1;
+	ourHeavyAttack1Action->fxFrames = new OurFxFrame*[1];
+	ourHeavyAttack1Action->fxFrames[0] = new OurFxFrame;
+	ourHeavyAttack1Action->fxFrames[0]->frameNO = 1;
+	ourHeavyAttack1Action->fxFrames[0]->fxName = AllFx::LyubuWeapon3;
+		//img
 	ourHeavyAttack1Action->hasImg = true;
 	ourHeavyAttack1Action->Img = "skill1";
 	
@@ -396,7 +404,11 @@ void Lyubu::Rotate(int degree, float cameraPos[])
 void Lyubu::damaged( int attack_pt, ACTORid attacker, float angle )
 {
 	HP -= attack_pt;
-	if( HP <= 0 )
+	if( HP <= HP_MAX/2 && AllMusic::current_music == AllMusic::stage )
+	{
+		AllMusic::play( AllMusic::warning, LOOP );
+	}
+	else if( HP <= 0 )
 	{
 		sendAction(ourDieAction);
 		HP = 0;
