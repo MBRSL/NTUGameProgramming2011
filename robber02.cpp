@@ -105,7 +105,7 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	ourDamage1Action = new OurAction();
 	ourDamage1Action->actID = actor.GetBodyAction(NULL, "Damage1");
 	ourDamage1Action->frames_num = 0;
-	ourDamage1Action->play_speed = 1.5;
+	ourDamage1Action->play_speed = 1.0;
 	ourDamage1Action->priority = 100;
 	ourDamage1Action->type.value = Action_type::ACTION_DAMAGED();
 	ourDamage1Action->numOfFxFrames = 1;
@@ -118,7 +118,7 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	ourDamage2Action = new OurAction();
 	ourDamage2Action->actID = actor.GetBodyAction(NULL, "Damage2");
 	ourDamage2Action->frames_num = 0;
-	ourDamage2Action->play_speed = 1.5;
+	ourDamage2Action->play_speed = 1.0;
 	ourDamage2Action->priority = 100;
 	ourDamage2Action->type.value = Action_type::ACTION_DAMAGED();
 	ourDamage2Action->numOfFxFrames = 1;

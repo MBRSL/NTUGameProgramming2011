@@ -22,7 +22,9 @@ char* AllImg::ImgDirAddr = 0;
 //FX
 char* AllFx::Attack01 = "Attack01";
 char* AllFx::LyubuWeapon1 = "LyubuWeapon1";
+char* AllFx::LyubuWeapon2 = "LyubuWeapon2";
 char* AllFx::LyubuWeapon3 = "LyubuWeapon3";
+char* AllFx::LyubuUtiAttack = "LyubuUtiAttack";
 char* AllFx::SmallHurt01 = "SmallHurt01";
 char* AllFx::BigHurt01 = "BigHurt01";
 char* AllFx::BigHurt02 = "BigHurt02";
@@ -35,7 +37,9 @@ char* AllFx::smoke = "smoke";
 char* AllFx::smoke1 = "smoke1";
 char* AllFx::WeaponThounder = "WeaponThounder";
 char* AllFx::blood2 = "blood2";
+char* AllFx::DonzoNormal1 = "DonzoNormal1";
 char* AllFx::DonzoHeavy3 = "DonzoHeavy3";
+char* AllFx::DonzoDamageRight = "DonzoDamageRight";
 WORLDid AllFx::gID = 0;
 
 eF3DFX* AllFx::getFX(char*filename, SCENEid sID){

@@ -58,14 +58,21 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 	ourAttack1Action->play_speed = 1;
 	ourAttack1Action->priority = 5;
 	ourAttack1Action->type.value = Action_type::ACTION_ATTACK();
-	ourAttack1Action->numOfKeyFrames = 1;
-	ourAttack1Action->keyFrames = new OurFrame*[1];
-	ourAttack1Action->keyFrames[0] = new OurFrame;
-	ourAttack1Action->keyFrames[0]->frameNO = 10;
-	ourAttack1Action->keyFrames[0]->start_angle = 320;
-	ourAttack1Action->keyFrames[0]->plus_angle = 80;
-	ourAttack1Action->keyFrames[0]->valid_dis = 200;
-	ourAttack1Action->keyFrames[0]->damage_pt = 100;
+		//key
+		ourAttack1Action->numOfKeyFrames = 1;
+		ourAttack1Action->keyFrames = new OurFrame*[1];
+		ourAttack1Action->keyFrames[0] = new OurFrame;
+		ourAttack1Action->keyFrames[0]->frameNO = 10;
+		ourAttack1Action->keyFrames[0]->start_angle = 320;
+		ourAttack1Action->keyFrames[0]->plus_angle = 80;
+		ourAttack1Action->keyFrames[0]->valid_dis = 200;
+		ourAttack1Action->keyFrames[0]->damage_pt = 100;
+		//fx
+		ourAttack1Action->numOfFxFrames = 1;
+		ourAttack1Action->fxFrames = new OurFxFrame*[1];
+		ourAttack1Action->fxFrames[0] = new OurFxFrame;
+		ourAttack1Action->fxFrames[0]->frameNO = 1;
+		ourAttack1Action->fxFrames[0]->fxName = AllFx::DonzoNormal1;
 
 	ourHeavyAttack1Action = new OurAction();
 	ourHeavyAttack1Action->actID = actor.GetBodyAction(NULL, "AttackH");
@@ -129,29 +136,30 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 	ourDamageLAction = new OurAction();
 	ourDamageLAction->actID = actor.GetBodyAction(NULL, "DamageL");
 	ourDamageLAction->frames_num = 0;
-	ourDamageLAction->play_speed = 1.5;
+	ourDamageLAction->play_speed = 1.0;
 	ourDamageLAction->priority = 100;
 	ourDamageLAction->type.value = DonzoAction::ACTION_DAMAGED();
-	//fx
-	ourDamageLAction->numOfFxFrames = 1;
-	ourDamageLAction->fxFrames = new OurFxFrame*[1];
-	ourDamageLAction->fxFrames[0] = new OurFxFrame;
-	ourDamageLAction->fxFrames[0]->frameNO = 1;
-	ourDamageLAction->fxFrames[0]->fxName = AllFx::SmallHurt01;
+		//fx
+		ourDamageLAction->numOfFxFrames = 1;
+		ourDamageLAction->fxFrames = new OurFxFrame*[1];
+		ourDamageLAction->fxFrames[0] = new OurFxFrame;
+		ourDamageLAction->fxFrames[0]->frameNO = 1;
+		ourDamageLAction->fxFrames[0]->fxName = AllFx::SmallHurt01;
 
 	//DamageH
 	ourDamageHAction = new OurAction();
 	ourDamageHAction->actID = actor.GetBodyAction(NULL, "DamageH");
 	ourDamageHAction->frames_num = 0;
-	ourDamageHAction->play_speed = 1.5;
+	ourDamageHAction->play_speed = 1.0;
 	ourDamageHAction->priority = 100;
 	ourDamageHAction->type.value = DonzoAction::ACTION_DAMAGED();
-	//fx
-	ourDamageHAction->numOfFxFrames = 1;
-	ourDamageHAction->fxFrames = new OurFxFrame*[1];
-	ourDamageHAction->fxFrames[0] = new OurFxFrame;
-	ourDamageHAction->fxFrames[0]->frameNO = 1;
-	ourDamageHAction->fxFrames[0]->fxName = AllFx::BigHurt01;
+		//fx
+		ourDamageHAction->numOfFxFrames = 1;
+		ourDamageHAction->fxFrames = new OurFxFrame*[1];
+		ourDamageHAction->fxFrames[0] = new OurFxFrame;
+		ourDamageHAction->fxFrames[0]->frameNO = 1;
+		//ourDamageHAction->fxFrames[0]->fxName = AllFx::BigHurt01;
+		ourDamageHAction->fxFrames[0]->fxName = AllFx::DonzoDamageRight;
 
 	//Die
 	ourDieAction = new OurAction();

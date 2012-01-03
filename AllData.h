@@ -32,7 +32,9 @@ public:
 	static eF3DFX* getFX(char *filename, SCENEid sid);
 	static char* Attack01;
 	static char* LyubuWeapon1;
+	static char* LyubuWeapon2;
 	static char* LyubuWeapon3;
+	static char* LyubuUtiAttack;
 	static char* SmallHurt01;
 	static char* BigHurt01;
 	static char* BigHurt02;
@@ -45,7 +47,9 @@ public:
 	static char* smoke1;
 	static char* WeaponThounder;
 	static char* blood2;
+	static char* DonzoNormal1;
 	static char* DonzoHeavy3;
+	static char* DonzoDamageRight;
 private:
 	
 };
