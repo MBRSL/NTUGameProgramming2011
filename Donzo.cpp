@@ -144,7 +144,7 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 		ourDamageLAction->fxFrames = new OurFxFrame*[1];
 		ourDamageLAction->fxFrames[0] = new OurFxFrame;
 		ourDamageLAction->fxFrames[0]->frameNO = 1;
-		ourDamageLAction->fxFrames[0]->fxName = AllFx::SmallHurt01;
+		ourDamageLAction->fxFrames[0]->fxName = AllFx::BigHurt01;
 
 	//DamageH
 	ourDamageHAction = new OurAction();
@@ -158,8 +158,8 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 		ourDamageHAction->fxFrames = new OurFxFrame*[1];
 		ourDamageHAction->fxFrames[0] = new OurFxFrame;
 		ourDamageHAction->fxFrames[0]->frameNO = 1;
-		//ourDamageHAction->fxFrames[0]->fxName = AllFx::BigHurt01;
-		ourDamageHAction->fxFrames[0]->fxName = AllFx::DonzoDamageRight;
+		ourDamageHAction->fxFrames[0]->fxName = AllFx::BigHurt02;
+		//ourDamageHAction->fxFrames[0]->fxName = AllFx::DonzoDamageRight;
 
 	//Die
 	ourDieAction = new OurAction();

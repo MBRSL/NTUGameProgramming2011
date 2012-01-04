@@ -34,7 +34,8 @@ public:
 	static char* LyubuWeapon1;
 	static char* LyubuWeapon2;
 	static char* LyubuWeapon3;
-	static char* LyubuUtiAttack;
+	static char* LyubuHeavy2;
+	static char* LyubuHeavy3;
 	static char* SmallHurt01;
 	static char* BigHurt01;
 	static char* BigHurt02;
@@ -45,7 +46,7 @@ public:
 	static char* MagicMode02;
 	static char* smoke;
 	static char* smoke1;
-	static char* WeaponThounder;
+	static char* WeaponThunder;
 	static char* blood2;
 	static char* DonzoNormal1;
 	static char* DonzoHeavy3;

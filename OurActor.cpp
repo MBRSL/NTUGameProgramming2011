@@ -116,10 +116,7 @@ bool OurActor::playActionFx()
 		{
 			if( current_OurAction->fxFrames[i]->frameNO <= current_frame && 
 				current_OurAction->fxFrames[i]->frameNO >= current_frame - current_OurAction->play_speed ){
-				
 					current_OurAction->fxFrames[i]->fx = AllFx::getFX(current_OurAction->fxFrames[i]->fxName, sID);
-
-
 					eF3DBaseFX *fx_sub;
 					float pos[3];
 					actor.GetWorldPosition(pos);
@@ -144,6 +141,7 @@ bool OurActor::playActionFx()
 					}
 
 					FXcenter::playFX( current_OurAction->fxFrames[i]->fx );
+					
 			}
 		}
 	}

@@ -24,7 +24,8 @@ char* AllFx::Attack01 = "Attack01";
 char* AllFx::LyubuWeapon1 = "LyubuWeapon1";
 char* AllFx::LyubuWeapon2 = "LyubuWeapon2";
 char* AllFx::LyubuWeapon3 = "LyubuWeapon3";
-char* AllFx::LyubuUtiAttack = "LyubuUtiAttack";
+char* AllFx::LyubuHeavy2 = "LyubuHeavy2";
+char* AllFx::LyubuHeavy3 = "LyubuHeavy3";
 char* AllFx::SmallHurt01 = "SmallHurt01";
 char* AllFx::BigHurt01 = "BigHurt01";
 char* AllFx::BigHurt02 = "BigHurt02";
@@ -35,7 +36,7 @@ char* AllFx::MagicMode01 = "MagicMode01";
 char* AllFx::MagicMode02 = "MagicMode02";
 char* AllFx::smoke = "smoke";
 char* AllFx::smoke1 = "smoke1";
-char* AllFx::WeaponThounder = "WeaponThounder";
+char* AllFx::WeaponThunder = "WeaponThunder";
 char* AllFx::blood2 = "blood2";
 char* AllFx::DonzoNormal1 = "DonzoNormal1";
 char* AllFx::DonzoHeavy3 = "DonzoHeavy3";
@@ -84,7 +85,6 @@ void FXcenter::playAllFX( float skip )
 		return;
 
 	bool beOK;
-//	eF3DFX *tmp;
 
 	if( queue_start < queue_end )
 	{

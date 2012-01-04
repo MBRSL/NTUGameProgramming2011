@@ -100,12 +100,14 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	ourRunAction->play_speed = 1;
 	ourRunAction->priority = 0;
 	ourRunAction->type.value = LyubuAction::ACTION_WALK();
-	//sound
-	ourRunAction->numOfAudioFrames = 1;
-	ourRunAction->audioFrames = new OurAudioFrame*[1];
-	ourRunAction->audioFrames[0] = new OurAudioFrame;
-	ourRunAction->audioFrames[0]->frameNO = 0;
-	ourRunAction->audioFrames[0]->audioID = AllAudio::s01_pose05;
+		//sound
+		ourRunAction->numOfAudioFrames = 1;
+		ourRunAction->audioFrames = new OurAudioFrame*[1];
+		ourRunAction->audioFrames[0] = new OurAudioFrame;
+		ourRunAction->audioFrames[0]->frameNO = 0;
+		ourRunAction->audioFrames[0]->audioID = AllAudio::s01_pose05;
+
+
 	//ATTACKS
 	ourAttack1Action = new OurAction();
 	ourAttack1Action->actID = actor.GetBodyAction(NULL, "NormalAttack1");
@@ -135,7 +137,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		ourAttack1Action->fxFrames = new OurFxFrame*[1];
 		ourAttack1Action->fxFrames[0] = new OurFxFrame;
 		ourAttack1Action->fxFrames[0]->frameNO = 1;
-		ourAttack1Action->fxFrames[0]->fxName = AllFx::LyubuWeapon2;
+		ourAttack1Action->fxFrames[0]->fxName = AllFx::WeaponSmoke;
 
 	ourAttack2Action = new OurAction();
 	ourAttack2Action->actID = actor.GetBodyAction(NULL, "NormalAttack2");
@@ -192,6 +194,12 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		ourAttack3Action->keyFrames[0]->plus_angle = 270;
 		ourAttack3Action->keyFrames[0]->valid_dis = 250;
 		ourAttack3Action->keyFrames[0]->damage_pt = 40;
+		//fx
+		ourAttack3Action->numOfFxFrames = 1;
+		ourAttack3Action->fxFrames = new OurFxFrame*[1];
+		ourAttack3Action->fxFrames[0] = new OurFxFrame;
+		ourAttack3Action->fxFrames[0]->frameNO = 1;
+		ourAttack3Action->fxFrames[0]->fxName = AllFx::WeaponThunder;
 
 	ourAttack4Action = new OurAction();
 	ourAttack4Action->actID = actor.GetBodyAction(NULL, "NormalAttack4");
@@ -275,7 +283,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		ourHeavyAttack2Action->fxFrames = new OurFxFrame*[1];
 		ourHeavyAttack2Action->fxFrames[0] = new OurFxFrame;
 		ourHeavyAttack2Action->fxFrames[0]->frameNO = 1;
-		ourHeavyAttack2Action->fxFrames[0]->fxName = AllFx::LyubuUtiAttack;
+		ourHeavyAttack2Action->fxFrames[0]->fxName = AllFx::LyubuHeavy2;
 		//img
 		ourHeavyAttack2Action->hasImg = true;
 		ourHeavyAttack2Action->Img = "skill2";
@@ -289,16 +297,24 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	ourHeavyAttack3Action->type.value = LyubuAction::ACTION_HEAVY_ATTACK3();
 	ourHeavyAttack3Action->combo_able_frame_start = 24;
 	ourHeavyAttack3Action->combo_able_frame_end = 40;
-	ourHeavyAttack3Action->numOfKeyFrames = 1;
-	ourHeavyAttack3Action->keyFrames = new OurFrame*[1];
-	ourHeavyAttack3Action->keyFrames[0] = new OurFrame;
-	ourHeavyAttack3Action->keyFrames[0]->frameNO = 24;
-	ourHeavyAttack3Action->keyFrames[0]->start_angle = 270;
-	ourHeavyAttack3Action->keyFrames[0]->plus_angle = 180;
-	ourHeavyAttack3Action->keyFrames[0]->valid_dis = 190;
-	ourHeavyAttack3Action->keyFrames[0]->damage_pt = 60;
-	ourHeavyAttack3Action->hasImg = true;
-	ourHeavyAttack3Action->Img = "skill3";
+		//key
+		ourHeavyAttack3Action->numOfKeyFrames = 1;
+		ourHeavyAttack3Action->keyFrames = new OurFrame*[1];
+		ourHeavyAttack3Action->keyFrames[0] = new OurFrame;
+		ourHeavyAttack3Action->keyFrames[0]->frameNO = 24;
+		ourHeavyAttack3Action->keyFrames[0]->start_angle = 270;
+		ourHeavyAttack3Action->keyFrames[0]->plus_angle = 180;
+		ourHeavyAttack3Action->keyFrames[0]->valid_dis = 190;
+		ourHeavyAttack3Action->keyFrames[0]->damage_pt = 60;
+		//fx
+		ourHeavyAttack3Action->numOfFxFrames = 1;
+		ourHeavyAttack3Action->fxFrames = new OurFxFrame*[1];
+		ourHeavyAttack3Action->fxFrames[0] = new OurFxFrame;
+		ourHeavyAttack3Action->fxFrames[0]->frameNO = 1;
+		ourHeavyAttack3Action->fxFrames[0]->fxName = AllFx::LyubuHeavy3;
+		//img
+		ourHeavyAttack3Action->hasImg = true;
+		ourHeavyAttack3Action->Img = "skill3";
 
 	//Damaged
 	ourHeavyDamagedAction = new OurAction();
