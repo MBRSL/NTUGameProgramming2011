@@ -52,6 +52,12 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	ourRunAction->play_speed = 1;
 	ourRunAction->priority = 0;
 	ourRunAction->type.value = Action_type::ACTION_WALK();
+	//sound
+		ourRunAction->numOfAudioFrames = 1;
+		ourRunAction->audioFrames = new OurAudioFrame*[1];
+		ourRunAction->audioFrames[0] = new OurAudioFrame;
+		ourRunAction->audioFrames[0]->frameNO = 0;
+		ourRunAction->audioFrames[0]->audioID = AllAudio::s01_pose05;
 	//Attack
 	ourAttack1Action = new OurAction();
 	ourAttack1Action->actID = actor.GetBodyAction(NULL, "NormalAttack1");
@@ -68,6 +74,12 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	ourAttack1Action->keyFrames[0]->plus_angle = 40;
 	ourAttack1Action->keyFrames[0]->valid_dis = 170;
 	ourAttack1Action->keyFrames[0]->damage_pt = 20;
+	//sound
+		ourAttack1Action->numOfAudioFrames = 1;
+		ourAttack1Action->audioFrames = new OurAudioFrame*[2];
+		ourAttack1Action->audioFrames[0] = new OurAudioFrame;
+		ourAttack1Action->audioFrames[0]->frameNO = 7;
+		ourAttack1Action->audioFrames[0]->audioID = AllAudio::Swing02;
 
 	ourAttack2Action = new OurAction();
 	ourAttack2Action->actID = actor.GetBodyAction(NULL, "NormalAttack2");
@@ -84,6 +96,13 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	ourAttack2Action->keyFrames[0]->plus_angle = 250;
 	ourAttack2Action->keyFrames[0]->valid_dis = 160;
 	ourAttack2Action->keyFrames[0]->damage_pt = 10;
+	//sound
+		ourAttack2Action->numOfAudioFrames = 1;
+		ourAttack2Action->audioFrames = new OurAudioFrame*[2];
+		ourAttack2Action->audioFrames[0] = new OurAudioFrame;
+		ourAttack2Action->audioFrames[0]->frameNO = 20;
+		ourAttack2Action->audioFrames[0]->audioID = AllAudio::Swing03;
+
 
 	ourHeavyAttackAction = new OurAction();
 	ourHeavyAttackAction->actID = actor.GetBodyAction(NULL, "HeavyAttack1");
@@ -100,6 +119,17 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	ourHeavyAttackAction->keyFrames[0]->plus_angle = 120;
 	ourHeavyAttackAction->keyFrames[0]->valid_dis = 130;
 	ourHeavyAttackAction->keyFrames[0]->damage_pt = 10;
+	//sound
+		ourHeavyAttackAction->numOfAudioFrames = 2;
+		ourHeavyAttackAction->audioFrames = new OurAudioFrame*[2];
+		ourHeavyAttackAction->audioFrames[0] = new OurAudioFrame;
+		ourHeavyAttackAction->audioFrames[0]->frameNO = 0;
+		ourHeavyAttackAction->audioFrames[0]->audioID = AllAudio::s02_pose07;
+		ourHeavyAttackAction->audioFrames[1] = new OurAudioFrame;
+		ourHeavyAttackAction->audioFrames[1]->frameNO = 15;
+		ourHeavyAttackAction->audioFrames[1]->audioID = AllAudio::Swing04;
+
+
 	
 	//Damage1
 	ourDamage1Action = new OurAction();
@@ -113,7 +143,12 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	ourDamage1Action->fxFrames[0] = new OurFxFrame;
 	ourDamage1Action->fxFrames[0]->frameNO = 1;
 	ourDamage1Action->fxFrames[0]->fxName = AllFx::SmallHurt01;
-
+		ourDamage1Action->numOfAudioFrames = 1;
+		ourDamage1Action->audioFrames = new OurAudioFrame*[2];
+		ourDamage1Action->audioFrames[0] = new OurAudioFrame;
+		ourDamage1Action->audioFrames[0]->frameNO = 1;
+		ourDamage1Action->audioFrames[0]->audioID = AllAudio::Attack07;
+	
 	//Damage2
 	ourDamage2Action = new OurAction();
 	ourDamage2Action->actID = actor.GetBodyAction(NULL, "Damage2");
@@ -131,7 +166,12 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	ourDamage2Action->audioFrames[0] = new OurAudioFrame;
 	ourDamage2Action->audioFrames[0]->frameNO = 0;
 	ourDamage2Action->audioFrames[0]->audioID = AllAudio::s03_pose18;
-
+		ourDamage2Action->numOfAudioFrames = 1;
+		ourDamage2Action->audioFrames = new OurAudioFrame*[2];
+		ourDamage2Action->audioFrames[0] = new OurAudioFrame;
+		ourDamage2Action->audioFrames[0]->frameNO = 0;
+		ourDamage2Action->audioFrames[0]->audioID = AllAudio::Attack06;
+	
 
 	//Die
 	ourDieAction = new OurAction();
@@ -140,11 +180,17 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	ourDieAction->play_speed = 1;
 	ourDieAction->priority = 100;
 	ourDieAction->type.value = Action_type::ACTION_DIE();
-	ourDieAction->numOfAudioFrames = 1;
-	ourDieAction->audioFrames = new OurAudioFrame*[2];
+	ourDieAction->numOfAudioFrames = 3;
+	ourDieAction->audioFrames = new OurAudioFrame*[3];
 	ourDieAction->audioFrames[0] = new OurAudioFrame;
-	ourDieAction->audioFrames[0]->frameNO = 0;
+	ourDieAction->audioFrames[0]->frameNO = 1;
 	ourDieAction->audioFrames[0]->audioID = AllAudio::s03_pose25;
+	ourDieAction->audioFrames[1] = new OurAudioFrame;
+	ourDieAction->audioFrames[1]->frameNO = 0;
+	ourDieAction->audioFrames[1]->audioID = AllAudio::Attack10;
+	ourDieAction->audioFrames[2] = new OurAudioFrame;
+	ourDieAction->audioFrames[2]->frameNO = 28;
+	ourDieAction->audioFrames[2]->audioID = AllAudio::Attack16;
 
 	//blood
 	{

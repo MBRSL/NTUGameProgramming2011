@@ -16,6 +16,54 @@ AUDIOid AllAudio::s03_pose25 = 0;
 AUDIOid AllAudio::eat = 0;
 AUDIOid AllAudio::se_select = 0;
 
+
+AUDIOid AllAudio::lyubu_attack_light = 0;
+AUDIOid AllAudio::lyubu_attack_medium = 0;
+AUDIOid AllAudio::lyubu_attack_heavy1 = 0;
+AUDIOid AllAudio::lyubu_attack_heavy2 = 0;
+AUDIOid AllAudio::lyubu_attack_heavy3 = 0;
+AUDIOid AllAudio::lyubu_mousou1 = 0;
+AUDIOid AllAudio::lyubu_mousou2 = 0;
+AUDIOid AllAudio::lyubu_mousou3 = 0;
+AUDIOid AllAudio::lyubu_damaged_light = 0;
+AUDIOid AllAudio::lyubu_damaged_medium = 0;
+AUDIOid AllAudio::lyubu_damaged_heavy = 0;
+AUDIOid AllAudio::lyubu_damaged_miserable = 0;
+
+AUDIOid AllAudio::donzo_attack_light = 0;
+AUDIOid AllAudio::donzo_attack_medium = 0;
+AUDIOid AllAudio::donzo_attack_heavy1 = 0;
+AUDIOid AllAudio::donzo_attack_heavy2 = 0;
+AUDIOid AllAudio::donzo_mousou1 = 0;
+AUDIOid AllAudio::donzo_mousou2 = 0;
+AUDIOid AllAudio::donzo_damaged_light = 0;
+AUDIOid AllAudio::donzo_damaged_medium = 0;
+AUDIOid AllAudio::donzo_damaged_heavy = 0;
+AUDIOid AllAudio::donzo_damaged_miserable = 0;
+
+
+AUDIOid AllAudio::weapon_attack = 0;
+AUDIOid AllAudio::weapon_charge_attack = 0;
+AUDIOid AllAudio::Swing02 = 0;
+AUDIOid AllAudio::Swing03  = 0;
+AUDIOid AllAudio::Swing04  = 0;
+
+AUDIOid AllAudio::Attack06 = 0;
+AUDIOid AllAudio::Attack07 = 0;
+AUDIOid AllAudio::Attack10 = 0;
+AUDIOid AllAudio::Attack12 = 0;
+AUDIOid AllAudio::Attack16 = 0;
+
+AUDIOid AllAudio::Thunder01 = 0;
+AUDIOid AllAudio::Thunder02 = 0;
+AUDIOid AllAudio::Thunder03 = 0;
+AUDIOid AllAudio::Explosion03 = 0;
+AUDIOid AllAudio::Light03 = 0;
+AUDIOid AllAudio::Darkness02 = 0;
+
+
+AUDIOid AllAudio::charge_voice1 = 0;
+
 //Img
 char* AllImg::ImgDirAddr = 0;
 
@@ -316,6 +364,169 @@ void loadAll( WORLDid gID, SCENEid sID )
 	AllAudio::se_select = gw.CreateAudio();
 	audio.Object(AllAudio::se_select);
 	audio.Load("se_select");
+
+		//lyubu voice
+	AllAudio::lyubu_attack_light = gw.CreateAudio();
+	audio.Object(AllAudio::lyubu_attack_light);
+	audio.Load("lyubu_attack_light");
+
+	AllAudio::lyubu_attack_medium = gw.CreateAudio();
+	audio.Object(AllAudio::lyubu_attack_medium);
+	audio.Load("lyubu_attack_medium");
+
+	AllAudio::lyubu_attack_heavy1 = gw.CreateAudio();
+	audio.Object(AllAudio::lyubu_attack_heavy1);
+	audio.Load("lyubu_attack_heavy1");
+
+	AllAudio::lyubu_attack_heavy2 = gw.CreateAudio();
+	audio.Object(AllAudio::lyubu_attack_heavy2);
+	audio.Load("lyubu_attack_heavy2");
+
+	AllAudio::lyubu_attack_heavy3 = gw.CreateAudio();
+	audio.Object(AllAudio::lyubu_attack_heavy3);
+	audio.Load("lyubu_attack_heavy3");
+
+	AllAudio::lyubu_mousou1 = gw.CreateAudio();
+	audio.Object(AllAudio::lyubu_mousou1);
+	audio.Load("lyubu_mousou1");
+
+	AllAudio::lyubu_mousou2 = gw.CreateAudio();
+	audio.Object(AllAudio::lyubu_mousou2);
+	audio.Load("lyubu_mousou2");
+
+	AllAudio::lyubu_mousou3 = gw.CreateAudio();
+	audio.Object(AllAudio::lyubu_mousou3);
+	audio.Load("lyubu_mousou3");
+
+	AllAudio::lyubu_damaged_light = gw.CreateAudio();
+	audio.Object(AllAudio::lyubu_damaged_light);
+	audio.Load("lyubu_damaged_light");
+
+	AllAudio::lyubu_damaged_medium = gw.CreateAudio();
+	audio.Object(AllAudio::lyubu_damaged_medium);
+	audio.Load("lyubu_damaged_medium");
+
+	AllAudio::lyubu_damaged_heavy = gw.CreateAudio();
+	audio.Object(AllAudio::lyubu_damaged_heavy);
+	audio.Load("lyubu_damaged_heavy");
+
+	AllAudio::lyubu_damaged_miserable = gw.CreateAudio();
+	audio.Object(AllAudio::lyubu_damaged_miserable);
+	audio.Load("lyubu_damaged_miserable");
+	
+		//donzo voice
+	AllAudio::donzo_attack_light = gw.CreateAudio();
+	audio.Object(AllAudio::donzo_attack_light);
+	audio.Load("donzo_attack_light");
+
+	AllAudio::donzo_attack_medium = gw.CreateAudio();
+	audio.Object(AllAudio::donzo_attack_medium);
+	audio.Load("donzo_attack_medium");
+
+	AllAudio::donzo_attack_heavy1 = gw.CreateAudio();
+	audio.Object(AllAudio::donzo_attack_heavy1);
+	audio.Load("donzo_attack_heavy1");
+
+	AllAudio::donzo_attack_heavy2 = gw.CreateAudio();
+	audio.Object(AllAudio::donzo_attack_heavy2);
+	audio.Load("donzo_attack_heavy2");
+
+	AllAudio::donzo_mousou1 = gw.CreateAudio();
+	audio.Object(AllAudio::donzo_mousou1);
+	audio.Load("donzo_mousou1");
+
+	AllAudio::donzo_mousou2 = gw.CreateAudio();
+	audio.Object(AllAudio::donzo_mousou2);
+	audio.Load("donzo_mousou2");
+
+	AllAudio::donzo_damaged_light = gw.CreateAudio();
+	audio.Object(AllAudio::donzo_damaged_light);
+	audio.Load("donzo_damaged_light");
+
+	AllAudio::donzo_damaged_medium = gw.CreateAudio();
+	audio.Object(AllAudio::donzo_damaged_medium);
+	audio.Load("donzo_damaged_medium");
+
+	AllAudio::donzo_damaged_heavy = gw.CreateAudio();
+	audio.Object(AllAudio::donzo_damaged_heavy);
+	audio.Load("donzo_damaged_heavy");
+
+	AllAudio::donzo_damaged_miserable = gw.CreateAudio();
+	audio.Object(AllAudio::donzo_damaged_miserable);
+	audio.Load("donzo_damaged_miserable");
+
+
+		//weapon
+	AllAudio::weapon_attack = gw.CreateAudio();
+	audio.Object(AllAudio::weapon_attack);
+	audio.Load("weapon_attack");
+
+	AllAudio::weapon_charge_attack = gw.CreateAudio();
+	audio.Object(AllAudio::weapon_charge_attack);
+	audio.Load("weapon_charge_attack");
+
+	AllAudio::Swing02 = gw.CreateAudio();
+	audio.Object(AllAudio::Swing02);
+	audio.Load("063-Swing02");
+
+	AllAudio::Swing03 = gw.CreateAudio();
+	audio.Object(AllAudio::Swing03);
+	audio.Load("064-Swing03");
+
+	AllAudio::Swing04 = gw.CreateAudio();
+	audio.Object(AllAudio::Swing04);
+	audio.Load("065-Swing04");
+
+	AllAudio::Attack06 = gw.CreateAudio();
+	audio.Object(AllAudio::Attack06);
+	audio.Load("094-Attack06");
+
+	AllAudio::Attack07 = gw.CreateAudio();
+	audio.Object(AllAudio::Attack07);
+	audio.Load("095-Attack07");
+	
+	AllAudio::Attack10 = gw.CreateAudio();
+	audio.Object(AllAudio::Attack10);
+	audio.Load("098-Attack10");
+
+	AllAudio::Attack12 = gw.CreateAudio();
+	audio.Object(AllAudio::Attack12);
+	audio.Load("100-Attack12");
+
+	AllAudio::Attack16 = gw.CreateAudio();
+	audio.Object(AllAudio::Attack16);
+	audio.Load("104-Attack16");
+
+		//fx sound
+	AllAudio::Thunder01 = gw.CreateAudio();
+	audio.Object(AllAudio::Thunder01);
+	audio.Load("123-Thunder01");
+
+	AllAudio::Thunder02 = gw.CreateAudio();
+	audio.Object(AllAudio::Thunder02);
+	audio.Load("124-Thunder02");
+
+	AllAudio::Thunder03 = gw.CreateAudio();
+	audio.Object(AllAudio::Thunder03);
+	audio.Load("125-Thunder03");
+	
+	AllAudio::Explosion03 = gw.CreateAudio();
+	audio.Object(AllAudio::Explosion03);
+	audio.Load("050-Explosion03");
+	
+	AllAudio::Light03 = gw.CreateAudio();
+	audio.Object(AllAudio::Light03);
+	audio.Load("137-Light03");
+
+	AllAudio::Darkness02 = gw.CreateAudio();
+	audio.Object(AllAudio::Darkness02);
+	audio.Load("139-Darkness02");
+	
+		//mix
+	AllAudio::charge_voice1 = gw.CreateAudio();
+	audio.Object(AllAudio::charge_voice1);
+	audio.Load("charge_voice1");
+
 	//fx
 	AllFx::gID = gID;
 	FXcenter::initial(gID, sID);
