@@ -124,8 +124,8 @@ bool OurActor::playActionFx()
 					int numFX = current_OurAction->fxFrames[i]->fx->NumberFXs();
 					for (int j = 0; j < numFX; j++) {
 						fx_sub = current_OurAction->fxFrames[i]->fx->GetFX(j);
-						if( fx_sub == NULL )
-							continue;
+						//if( fx_sub == NULL )
+						//	continue;
 						char *parent_name = fx_sub->GetParentName();
 						OBJECTid oid = actor.GetBoneObject( parent_name );
 						if( oid != FAILED_ID )

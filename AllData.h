@@ -4,7 +4,7 @@
 #include "FyFx.h"
 #include "FyMedia.h"
 
-void loadAll( WORLDid gID );
+void loadAll( WORLDid gID, SCENEid sID );
 
 class AllAudio
 {
@@ -29,28 +29,28 @@ class AllFx
 {
 public:
 	static WORLDid gID;
-	static eF3DFX* getFX(char *filename, SCENEid sid);
-	static char* Attack01;
-	static char* LyubuWeapon1;
-	static char* LyubuWeapon2;
-	static char* LyubuWeapon3;
-	static char* LyubuHeavy2;
-	static char* LyubuHeavy3;
-	static char* SmallHurt01;
-	static char* BigHurt01;
-	static char* BigHurt02;
-	static char* WeaponDefense01;
-	static char* WeaponSmoke;
-	static char* Eatneck;
-	static char* MagicMode01;
-	static char* MagicMode02;
-	static char* smoke;
-	static char* smoke1;
-	static char* WeaponThunder;
-	static char* blood2;
-	static char* DonzoNormal1;
-	static char* DonzoHeavy3;
-	static char* DonzoDamageRight;
+	static eF3DFX* getFX(eF3DFX* fx, SCENEid sID);
+	static eF3DFX* Attack01;
+	static eF3DFX* LyubuWeapon1;
+	static eF3DFX* LyubuWeapon2;
+	static eF3DFX* LyubuWeapon3;
+	static eF3DFX* LyubuHeavy2;
+	static eF3DFX* LyubuHeavy3;
+	static eF3DFX* SmallHurt01;
+	static eF3DFX* BigHurt01;
+	static eF3DFX* BigHurt02;
+	static eF3DFX* WeaponDefense01;
+	static eF3DFX* WeaponSmoke;
+	static eF3DFX* Eatneck;
+	static eF3DFX* MagicMode01;
+	static eF3DFX* MagicMode02;
+	static eF3DFX* smoke;
+	static eF3DFX* smoke1;
+	static eF3DFX* WeaponThunder;
+	static eF3DFX* blood2;
+	static eF3DFX* DonzoNormal1;
+	static eF3DFX* DonzoHeavy3;
+	static eF3DFX* DonzoDamageRight;
 private:
 	
 };
@@ -63,7 +63,7 @@ public:
 	static eF3DFX **queue;
 	static int queue_start, queue_end;
 	//method
-	static void initial();
+	static void initial(WORLDid gID, SCENEid sID);
 	static void playFX( eF3DFX* fx );
 	static void playAllFX( float skip );
 };

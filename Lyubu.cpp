@@ -464,7 +464,7 @@ void Lyubu::actionChangeSignal( OurAction *last_action, OurAction *current_actio
 	else
 	{
 		gw.SetTexturePath(AllImg::ImgDirAddr);
-		skill.SetRectArea(NULL, skill_length, skill_height, NULL, current_action->Img, 0, TRUE, 0, 0, 0);
+		skill.SetRectArea(NULL, skill_length, skill_height, NULL, current_action->Img, 0, TRUE, 1, 0, 0);
 		skill.SetRectPosition(skill_x, skill_y, 0);
 		skill.Show(TRUE);
 	}

@@ -45,7 +45,7 @@ struct OurAudioFrame{
 
 struct OurFxFrame{
 	float frameNO;
-	char* fxName;
+	eF3DFX *fxName;
 	eF3DFX *fx;
 };
 

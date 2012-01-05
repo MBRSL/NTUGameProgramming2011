@@ -20,6 +20,7 @@ AUDIOid AllAudio::se_select = 0;
 char* AllImg::ImgDirAddr = 0;
 
 //FX
+/*
 char* AllFx::Attack01 = "Attack01";
 char* AllFx::LyubuWeapon1 = "LyubuWeapon1";
 char* AllFx::LyubuWeapon2 = "LyubuWeapon2";
@@ -41,9 +42,32 @@ char* AllFx::blood2 = "blood2";
 char* AllFx::DonzoNormal1 = "DonzoNormal1";
 char* AllFx::DonzoHeavy3 = "DonzoHeavy3";
 char* AllFx::DonzoDamageRight = "DonzoDamageRight";
+*/
+eF3DFX* AllFx::Attack01 = NULL;
+eF3DFX* AllFx::LyubuWeapon1 = NULL;
+eF3DFX* AllFx::LyubuWeapon2 = NULL;
+eF3DFX* AllFx::LyubuWeapon3 = NULL;
+eF3DFX* AllFx::LyubuHeavy2 = NULL;
+eF3DFX* AllFx::LyubuHeavy3 = NULL;
+eF3DFX* AllFx::SmallHurt01 = NULL;
+eF3DFX* AllFx::BigHurt01 = NULL;
+eF3DFX* AllFx::BigHurt02 = NULL;
+eF3DFX* AllFx::WeaponDefense01 = NULL;
+eF3DFX* AllFx::WeaponSmoke = NULL;
+eF3DFX* AllFx::Eatneck = NULL;
+eF3DFX* AllFx::MagicMode01 = NULL;
+eF3DFX* AllFx::MagicMode02 = NULL;
+eF3DFX* AllFx::smoke = NULL;
+eF3DFX* AllFx::smoke1 = NULL;
+eF3DFX* AllFx::WeaponThunder = NULL;
+eF3DFX* AllFx::blood2 = NULL;
+eF3DFX* AllFx::DonzoNormal1 = NULL;
+eF3DFX* AllFx::DonzoHeavy3 = NULL;
+eF3DFX* AllFx::DonzoDamageRight = NULL;
 WORLDid AllFx::gID = 0;
 
-eF3DFX* AllFx::getFX(char*filename, SCENEid sID){
+eF3DFX* AllFx::getFX(eF3DFX* fx, SCENEid sID){
+	/*
 	FnWorld gw;
 	eF3DFX* fx = new eF3DFX(sID);
 	gw.Object(gID);
@@ -52,15 +76,23 @@ eF3DFX* AllFx::getFX(char*filename, SCENEid sID){
 	gw.SetObjectPath("Data\\NTU4\\FXs\\Models");
 	fx->SetWorkPath("Data\\NTU4\\FXs");
 	BOOL beOK = fx->Load(filename);
-
 	return fx;
+	*/
+	eF3DFX* fx2 = fx->Clone();
+	int numFX = fx->NumberFXs();
+	eF3DBaseFX *fx_sub;
+	for (int i = 0; i < numFX; i++) {
+		fx_sub = fx->GetFX(i);
+		fx2->GetFX(i)->SetParentName( fx_sub->GetParentName() );
+	}
+	return fx2;
 }
 
 //FXcenter
 int FXcenter::queue_start = 0;
 int FXcenter::queue_end = 0;
 eF3DFX** FXcenter::queue = NULL;
-void FXcenter::initial()
+void FXcenter::initial(WORLDid gID, SCENEid sID)
 {
 	queue_start = 0;
 	queue_end = 0;
@@ -69,7 +101,96 @@ void FXcenter::initial()
 	{
 		queue[i] = NULL;
 	}
-	
+
+	//allfx
+	FnWorld gw;
+	gw.Object(gID);
+	gw.SetTexturePath("Data\\NTU4\\FXs\\Textures");
+	gw.SetObjectPath("Data\\NTU4\\FXs\\Models");
+
+	AllFx::Attack01 = new eF3DFX(sID);
+	AllFx::Attack01->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::Attack01->Load("Attack01");
+
+	AllFx::LyubuWeapon1 =  new eF3DFX(sID);
+	AllFx::LyubuWeapon1->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::LyubuWeapon1->Load("LyubuWeapon1");
+
+	AllFx::LyubuWeapon2 =  new eF3DFX(sID);
+	AllFx::LyubuWeapon2->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::LyubuWeapon2->Load("LyubuWeapon2");
+
+	AllFx::LyubuWeapon3 =  new eF3DFX(sID);
+	AllFx::LyubuWeapon3->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::LyubuWeapon3->Load("LyubuWeapon3");
+
+	AllFx::LyubuHeavy2 =  new eF3DFX(sID);
+	AllFx::LyubuHeavy2->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::LyubuHeavy2->Load("LyubuHeavy2");
+
+	AllFx::LyubuHeavy3 =  new eF3DFX(sID);
+	AllFx::LyubuHeavy3->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::LyubuHeavy3->Load("LyubuHeavy3");
+
+	AllFx::SmallHurt01 =  new eF3DFX(sID);
+	AllFx::SmallHurt01->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::SmallHurt01->Load("SmallHurt01");
+
+	AllFx::BigHurt01 =  new eF3DFX(sID);
+	AllFx::BigHurt01->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::BigHurt01->Load("BigHurt01");
+
+	AllFx::BigHurt02 =  new eF3DFX(sID);
+	AllFx::BigHurt02->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::BigHurt02->Load("BigHurt02");
+
+	AllFx::WeaponDefense01 =  new eF3DFX(sID);
+	AllFx::WeaponDefense01->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::WeaponDefense01->Load("WeaponDefense01");
+
+	AllFx::WeaponSmoke =  new eF3DFX(sID);
+	AllFx::WeaponSmoke->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::WeaponSmoke->Load("WeaponSmoke");
+
+	AllFx::Eatneck =  new eF3DFX(sID);
+	AllFx::Eatneck->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::Eatneck->Load("Eatneck");
+
+	AllFx::MagicMode01 =  new eF3DFX(sID);
+	AllFx::MagicMode01->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::MagicMode01->Load("MagicMode01");
+
+	AllFx::MagicMode02 =  new eF3DFX(sID);
+	AllFx::MagicMode02->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::MagicMode02->Load("MagicMode02");
+
+	AllFx::smoke =  new eF3DFX(sID);
+	AllFx::smoke->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::smoke->Load("smoke");
+
+	AllFx::smoke1 =  new eF3DFX(sID);
+	AllFx::smoke1->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::smoke1->Load("smoke1");
+
+	AllFx::WeaponThunder =  new eF3DFX(sID);
+	AllFx::WeaponThunder->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::WeaponThunder->Load("WeaponThunder");
+
+	AllFx::blood2 =  new eF3DFX(sID);
+	AllFx::blood2 ->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::blood2 ->Load("blood2 ");
+
+	AllFx::DonzoNormal1 =  new eF3DFX(sID);
+	AllFx::DonzoNormal1->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::DonzoNormal1->Load("DonzoNormal1");
+
+	AllFx::DonzoHeavy3 =  new eF3DFX(sID);
+	AllFx::DonzoHeavy3->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::DonzoHeavy3->Load("DonzoHeavy3");
+
+	AllFx::DonzoDamageRight =  new eF3DFX(sID);
+	AllFx::DonzoDamageRight->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::DonzoDamageRight->Load("DonzoDamageRight");
 }
 void FXcenter::playFX( eF3DFX* fx )
 {
@@ -133,7 +254,7 @@ void AllMusic::play( MEDIAid bgm, int type )
 }
 
 //method
-void loadAll( WORLDid gID )
+void loadAll( WORLDid gID, SCENEid sID )
 {
 	FnWorld gw;
 	FnAudio audio;
@@ -197,7 +318,7 @@ void loadAll( WORLDid gID )
 	audio.Load("se_select");
 	//fx
 	AllFx::gID = gID;
-	FXcenter::initial();
+	FXcenter::initial(gID, sID);
 	//img
 	AllImg::ImgDirAddr = "Data\\NTU4\\Image";
 	//music
