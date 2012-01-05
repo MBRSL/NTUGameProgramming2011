@@ -161,16 +161,14 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	ourDamage2Action->fxFrames[0] = new OurFxFrame;
 	ourDamage2Action->fxFrames[0]->frameNO = 1;
 	ourDamage2Action->fxFrames[0]->fxName = AllFx::BigHurt01;
-	ourDamage2Action->numOfAudioFrames = 1;
+	ourDamage2Action->numOfAudioFrames =2;
 	ourDamage2Action->audioFrames = new OurAudioFrame*[2];
-	ourDamage2Action->audioFrames[0] = new OurAudioFrame;
-	ourDamage2Action->audioFrames[0]->frameNO = 0;
-	ourDamage2Action->audioFrames[0]->audioID = AllAudio::s03_pose18;
-		ourDamage2Action->numOfAudioFrames = 1;
-		ourDamage2Action->audioFrames = new OurAudioFrame*[2];
 		ourDamage2Action->audioFrames[0] = new OurAudioFrame;
 		ourDamage2Action->audioFrames[0]->frameNO = 0;
-		ourDamage2Action->audioFrames[0]->audioID = AllAudio::Attack06;
+		ourDamage2Action->audioFrames[0]->audioID = AllAudio::s03_pose18;
+		ourDamage2Action->audioFrames[1] = new OurAudioFrame;
+		ourDamage2Action->audioFrames[1]->frameNO = 0;
+		ourDamage2Action->audioFrames[1]->audioID = AllAudio::Attack06;
 	
 
 	//Die
