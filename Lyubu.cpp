@@ -225,8 +225,8 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	ourHeavyAttack3Action->keyFrames = new OurFrame*[1];
 	ourHeavyAttack3Action->keyFrames[0] = new OurFrame;
 	ourHeavyAttack3Action->keyFrames[0]->frameNO = 24;
-	ourHeavyAttack3Action->keyFrames[0]->start_angle = 30;
-	ourHeavyAttack3Action->keyFrames[0]->plus_angle = 180;
+	ourHeavyAttack3Action->keyFrames[0]->start_angle = 320;
+	ourHeavyAttack3Action->keyFrames[0]->plus_angle = 80;
 	ourHeavyAttack3Action->keyFrames[0]->valid_dis = 190;
 	ourHeavyAttack3Action->keyFrames[0]->damage_pt = 60;
 	//Damaged

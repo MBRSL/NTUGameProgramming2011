@@ -5,25 +5,27 @@
 
 Camera3rd::Camera3rd(WORLDid gID, SCENEid sID, OBJECTid terrainID, Lyubu *lyubu)
 {
-	FnWorld gw;
-	FnScene scene;
-	FnCamera camera;
-	FnViewport vp;
-
-	//initial
-	gw.Object(gID);
-	scene.Object(sID);
 	this->gID = gID;
 	this->sID = sID;
 	this->terrainID = terrainID;
 	this->lyubu = lyubu;
+
+	//initial
+	FnWorld gw;
+	gw.Object(gID);
+
+	FnScene scene;
+	scene.Object(sID);
+
 	//viewport
 	vID = gw.CreateViewport(0, 0, 800, 600);
+	FnViewport vp;
 	vp.Object(vID);
 	vp.SetBackgroundColor(0.3f, 0.4f, 0.5f);
 
 	//camera
-	cameraID = scene.CreateCamera(ROOT);
+	cameraID = scene.CreateCamera();
+	FnCamera camera;
 	camera.Object(cameraID);
 	camera.SetFov(50);  // camera look dis
 
@@ -42,7 +44,7 @@ Camera3rd::Camera3rd(WORLDid gID, SCENEid sID, OBJECTid terrainID, Lyubu *lyubu)
 	disBtwCenHig_std = 120;
 
 
-	fronterID = scene.CreateObject();
+	fronterID = scene.CreateObject(ROOT);
 	centerID = scene.CreateObject(fronterID);
 	higherID = scene.CreateObject(centerID);
 	fronter.Object(fronterID);
