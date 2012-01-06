@@ -1,4 +1,5 @@
 #include "MiniMap.h"
+#include "Lyubu.h"
 #include "TheFlyWin32.h"
 
 MiniMap::MiniMap(WORLDid gID, SCENEid sMiniID, int x_pos, int y_pos, int width, int height )
@@ -18,19 +19,23 @@ MiniMap::MiniMap(WORLDid gID, SCENEid sMiniID, int x_pos, int y_pos, int width, 
 	gw.Object(gID);
 
 	//miniMap
+	gw.SetObjectPath("Data\\NTU4\\Scenes");
 	FnScene miniScene;
 	miniScene.Object(sMiniID);
 	miniTerrainID = miniScene.CreateObject(ROOT);
 	FnObject miniTerrain;
 	miniTerrain.Object(miniTerrainID);
-	gw.SetObjectPath("Data\\NTU4\\Scenes");
 	miniTerrain.Load("terrain");
 	miniTerrain.SetOpacity(0.8f);
 
 	// create a camera stand for minimap
 	miniMapStandID = miniScene.CreateObject(ROOT);
-	FnObject miniMapStand;
-	miniMapStand.Object(miniMapStandID);
+
+	gw.SetObjectPath("Data\\NTU4\\Characters");
+	anchorID = miniScene.CreateObject(miniMapStandID);
+	FnObject anchor;
+	anchor.Object(anchorID);
+	anchor.Load("arrowGreen");
 
    // create a camera for minimap
 	miniMapCameraID = miniScene.CreateCamera(miniMapStandID);
@@ -50,13 +55,23 @@ MiniMap::MiniMap(WORLDid gID, SCENEid sMiniID, int x_pos, int y_pos, int width, 
 	vpMiniMapID = gw.CreateViewport(x_pos, y_pos, width, height);
 }
 
-void MiniMap::render(OBJECTid fronterID)
+void MiniMap::render(OBJECTid fronterID, OurEnemyActor **enemyActor, int enemy_num)
 {
 	//render miniMap
 	FnObject miniMapStand, mapRef;
 	miniMapStand.Object(miniMapStandID);
 	mapRef.Object(fronterID);
 	miniMapStand.SetMatrix(mapRef.GetMatrix(FALSE), REPLACE);
+
+	for(int i = 0; i < enemy_num; i++)
+	{
+		FnObject base, anchor;
+		OBJECTid baseID = enemyActor[i]->actor.GetBaseObject();
+		base.Object(baseID);
+		anchor.Object(enemyActor[i]->anchorID);
+		anchor.SetMatrix(base.GetMatrix(FALSE), REPLACE);
+	}
+
 	FnViewport vp;
 	vp.Object(vpMiniMapID);
 	//vp.Render(miniMapCameraID, FALSE, FALSE);

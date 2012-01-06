@@ -31,6 +31,11 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	aID = scene.LoadActor("Robber02");
 	actor.Object(aID);
 
+	//arrow
+	FnObject arrow;
+	arrow.Object(arrowID);
+	arrow.Load("arrowYellow");
+
 	//-------action---------
 	//IDLE
 	ourIdleAction = new OurAction();

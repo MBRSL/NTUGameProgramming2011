@@ -31,8 +31,8 @@ class OurEnemyActor : public OurActor{
 	public:
 		//var
 		EnemyTeam *team;
-
-		bool justRun;
+		OBJECTid anchorID;
+		OBJECTid arrowID;
 		//method
 		OurEnemyActor();
 		virtual void AI(ACTORid enemy, EnemyTeam **team, int teamCount) = 0;
