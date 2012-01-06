@@ -307,11 +307,24 @@ void AllMusic::initial( WORLDid gID )
 
 void AllMusic::play( MEDIAid bgm, int type )
 {
+	current_type = type;
 	mP->Stop();
 	current_music = bgm;
 	mP->Object(bgm);
 	//mP->SetVolume(0.8);
 	mP->Play(type);
+}
+int AllMusic::current_type = 0;
+void AllMusic::deal_loop()
+{
+	if( !mP->IsPlaying() )
+	{
+		if( current_type == LOOP )
+		{
+			mP->Stop();
+			mP->Play(current_type);
+		}
+	}
 }
 
 //method

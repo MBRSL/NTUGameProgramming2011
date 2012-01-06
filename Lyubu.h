@@ -48,6 +48,7 @@ class Lyubu : public OurActor{
 		OurAction *ourRightDamagedAction;
 		OurAction *ourDieAction;
 		float pos_begin[3];
+		float angle_begin;
 		float MOVE_SPEED, MOVE_ANGLE;
 
 		//method

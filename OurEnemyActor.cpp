@@ -88,7 +88,7 @@ void OurEnemyActor::flockingPosition(float *newPos, float *selfPos, float *targe
 	for(int i = 0; i < teamCount; i++)
 	{
 		//驚動狀態的隊伍才考慮
-		if(team[i]->aware)
+		//if(team[i]->aware)
 		{
 			//separation & cohesion
 			for(int mi = 0; mi < team[i]->member_num; mi++)

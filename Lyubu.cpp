@@ -12,6 +12,8 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	pos_begin[0]=3600.0;
 	pos_begin[1]=-3900.0;
 	pos_begin[2]=1000.0f;
+	angle_begin = 180;
+
 	MOVE_SPEED=10.0;
 	MOVE_ANGLE=5.0;
 	this->gID = gID;
@@ -79,6 +81,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 
 	aID = scene.LoadActor("Lyubu");
 	actor.Object(aID);
+	actor.TurnRight(angle_begin);
 
 	//呂布特有動作
 	FnActor actor;

@@ -15,8 +15,8 @@ class MiniMap
 		OBJECTid anchorID;		// self indication
 
 	public:
-		MiniMap( WORLDid , SCENEid , int , int , int , int );
-		void render(OBJECTid, OurEnemyActor **, int);
+		MiniMap( WORLDid , SCENEid , Lyubu*, int , int , int , int );
+		void render(OBJECTid, Lyubu*, OurEnemyActor **, int);
 		//must set before bind "turn()" with mouse
 };
 #endif

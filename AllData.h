@@ -131,6 +131,7 @@ public:
 	static FnMedia *mP;
 	static char* BgmDirAddr;
 	static MEDIAid current_music;
+	static int current_type;
 	//music
 	static MEDIAid stage;
 	static MEDIAid warning;
@@ -138,5 +139,6 @@ public:
 
 	static void play( MEDIAid bgm, int type );
 	static void initial( WORLDid gID );
+	static void deal_loop();
 };
 #endif

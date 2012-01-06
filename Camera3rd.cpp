@@ -62,7 +62,7 @@ Camera3rd::Camera3rd(WORLDid gID, SCENEid sID, OBJECTid terrainID, Lyubu *lyubu)
 	higherPos[1] = 0;
 	higherPos[2] = disBtwCenHig;
 
-	fronter.TurnRight(180);
+	fronter.TurnRight(lyubu->angle_begin);
 	fronter.SetPosition(fronterPos);
 	center.SetPosition(centerPos);
 	higher.SetPosition(higherPos);

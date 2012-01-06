@@ -2,7 +2,7 @@
 #include "Lyubu.h"
 #include "TheFlyWin32.h"
 
-MiniMap::MiniMap(WORLDid gID, SCENEid sMiniID, int x_pos, int y_pos, int width, int height )
+MiniMap::MiniMap(WORLDid gID, SCENEid sMiniID, Lyubu *lyubu, int x_pos, int y_pos, int width, int height )
 {
 	FnWorld gw;
 	FnScene scene;
@@ -55,10 +55,16 @@ MiniMap::MiniMap(WORLDid gID, SCENEid sMiniID, int x_pos, int y_pos, int width, 
 	vpMiniMapID = gw.CreateViewport(x_pos, y_pos, width, height);
 }
 
-void MiniMap::render(OBJECTid fronterID, OurEnemyActor **enemyActor, int enemy_num)
+void MiniMap::render(OBJECTid fronterID, Lyubu* lyubu, OurEnemyActor **enemyActor, int enemy_num)
 {
 	//render miniMap
-	FnObject miniMapStand, mapRef;
+	FnObject miniMapStand, mapRef, anchor_lyubu;
+
+	float pos[3];
+	lyubu->actor.GetWorldDirection(pos,NULL);
+	anchor_lyubu.Object(anchorID);
+	anchor_lyubu.SetWorldDirection(pos,NULL);
+	//anchor_lyubu.TurnRight(lyubu->angle_begin);
 	miniMapStand.Object(miniMapStandID);
 	mapRef.Object(fronterID);
 	miniMapStand.SetMatrix(mapRef.GetMatrix(FALSE), REPLACE);
