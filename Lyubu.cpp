@@ -41,7 +41,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 
 	lifebar_frameID = scene2D.CreateSprite();
 	sp.Object(lifebar_frameID);
-	sp.SetRectArea(NULL, lifebar_length, lifebar_height, NULL, "lifebar2", 0, TRUE, 0, 0, 0);
+	sp.SetRectArea(NULL, lifebar_length, lifebar_height, NULL, "lifebar2", 0, TRUE, 13, 0, 0);
 	sp.SetRectPosition(lifebar_x, lifebar_y, 0);
 
 	lifebarID = scene2D.CreateSprite();
@@ -106,6 +106,12 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		ourRunAction->audioFrames[0] = new OurAudioFrame;
 		ourRunAction->audioFrames[0]->frameNO = 0;
 		ourRunAction->audioFrames[0]->audioID = AllAudio::s01_pose05;
+		//fx
+		ourRunAction->numOfFxFrames = 1;
+		ourRunAction->fxFrames = new OurFxFrame*[1];
+		ourRunAction->fxFrames[0] = new OurFxFrame;
+		ourRunAction->fxFrames[0]->frameNO = 1;
+		ourRunAction->fxFrames[0]->fxName = AllFx::WeaponSmoke;
 
 
 	//ATTACKS
