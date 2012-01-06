@@ -62,6 +62,7 @@ Camera3rd::Camera3rd(WORLDid gID, SCENEid sID, OBJECTid terrainID, Lyubu *lyubu)
 	higherPos[1] = 0;
 	higherPos[2] = disBtwCenHig;
 
+	fronter.TurnRight(180);
 	fronter.SetPosition(fronterPos);
 	center.SetPosition(centerPos);
 	higher.SetPosition(higherPos);
@@ -78,13 +79,13 @@ void Camera3rd::SetPosition(float pos[3], ACTIONid actorID)
 	fronterPos[2] = pos[2];
 
 	fronter.SetPosition(fronterPos);
+
 	}
 	float	cx=0,
 			cy=disBtwActFro+disBtwFroCen,
 			cz=disBtwCenHig; 
 
 	static float lookpos[]={0,0,80}; 
-
 	float x2=-cx+lookpos[0], y2=-cy+lookpos[1], z2=-cz+lookpos[2], x3=x2, y3=y2, z3=0;
 	float v1v2=x2*x3+y2*y3+z2*z3;
 	float v1=sqrt(x2*x2+y2*y2+z2*z2);

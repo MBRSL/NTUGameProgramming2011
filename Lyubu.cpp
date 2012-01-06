@@ -9,8 +9,8 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	HP_MAX = 2000;
 	HP = HP_MAX;
 
-	pos_begin[0]=3569.0;
-	pos_begin[1]=-3208.0;
+	pos_begin[0]=3600.0;
+	pos_begin[1]=-3900.0;
 	pos_begin[2]=1000.0f;
 	MOVE_SPEED=10.0;
 	MOVE_ANGLE=5.0;
