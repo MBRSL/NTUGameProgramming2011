@@ -5,6 +5,16 @@
 
 Camera3rd::Camera3rd(WORLDid gID, SCENEid sID, OBJECTid terrainID, Lyubu *lyubu)
 {
+<<<<<<< HEAD
+=======
+	FnWorld gw;
+	FnScene scene;
+	FnCamera camera;
+
+	//initial
+	gw.Object(gID);
+	scene.Object(sID);
+>>>>>>> ee3e5d84916e2a3b6151ad96058f684494700bca
 	this->gID = gID;
 	this->sID = sID;
 	this->terrainID = terrainID;
@@ -19,6 +29,7 @@ Camera3rd::Camera3rd(WORLDid gID, SCENEid sID, OBJECTid terrainID, Lyubu *lyubu)
 
 	//viewport
 	vID = gw.CreateViewport(0, 0, 800, 600);
+	FnViewport vp;
 	vp.Object(vID);
 	vp.SetBackgroundColor(1, 0.6f, 0.2f,0.5);
 
