@@ -27,6 +27,10 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 	aID = scene.LoadActor("Donzo");
 	actor.Object(aID);
 
+	//arrow
+	FnObject arrow;
+	arrow.Object(arrowID);
+	arrow.Load("arrowRed");
 
 	//-------action---------
 	//IDLE

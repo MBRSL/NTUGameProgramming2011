@@ -1,6 +1,6 @@
 #include "OurEnemyActor.h"
 #include "function.h"
-
+extern SCENEid sMiniID;
 void OurEnemyActor::bloodAdjust()
 {
 	float size[2];
@@ -12,7 +12,10 @@ void OurEnemyActor::bloodAdjust()
 
 OurEnemyActor::OurEnemyActor()
 {
-	justRun = false;
+	FnScene scene;
+	scene.Object(sMiniID);
+	anchorID = scene.CreateObject();
+	arrowID = scene.CreateObject(anchorID);
 }
 void OurEnemyActor::detectEnemy(ACTORid enemy)
 {
