@@ -23,6 +23,53 @@ public:
 	static AUDIOid s03_pose25;
 	static AUDIOid eat;
 	static AUDIOid se_select;
+
+//lyubu's voice
+	static AUDIOid lyubu_attack_light;
+	static AUDIOid lyubu_attack_medium;
+	static AUDIOid lyubu_attack_heavy1;
+	static AUDIOid lyubu_attack_heavy2;
+	static AUDIOid lyubu_attack_heavy3;
+	static AUDIOid lyubu_mousou1;
+	static AUDIOid lyubu_mousou2;
+	static AUDIOid lyubu_mousou3;
+	static AUDIOid lyubu_damaged_light;
+	static AUDIOid lyubu_damaged_medium;
+	static AUDIOid lyubu_damaged_heavy;
+	static AUDIOid lyubu_damaged_miserable;
+//donzo's voice
+	static AUDIOid donzo_attack_light;
+	static AUDIOid donzo_attack_medium;
+	static AUDIOid donzo_attack_heavy1;
+	static AUDIOid donzo_attack_heavy2;
+	static AUDIOid donzo_attack_heavy3;
+	static AUDIOid donzo_mousou1;
+	static AUDIOid donzo_mousou2;
+	static AUDIOid donzo_damaged_light;
+	static AUDIOid donzo_damaged_medium;
+	static AUDIOid donzo_damaged_heavy;
+	static AUDIOid donzo_damaged_miserable;
+//weapon sound
+	static AUDIOid weapon_attack;
+	static AUDIOid weapon_charge_attack;
+	static AUDIOid Swing02;
+	static AUDIOid Swing03;
+	static AUDIOid Swing04;
+
+	static AUDIOid Attack06;
+	static AUDIOid Attack07;
+	static AUDIOid Attack10;
+	static AUDIOid Attack12;
+	static AUDIOid Attack16;
+//fx sound
+	static AUDIOid Thunder01;
+	static AUDIOid Thunder02;
+	static AUDIOid Thunder03;
+	static AUDIOid Explosion03;
+	static AUDIOid Light03;
+	static AUDIOid Darkness02;
+//mix
+	static AUDIOid charge_voice1;
 };
 
 class AllFx
