@@ -58,8 +58,10 @@ AUDIOid AllAudio::Thunder01 = 0;
 AUDIOid AllAudio::Thunder02 = 0;
 AUDIOid AllAudio::Thunder03 = 0;
 AUDIOid AllAudio::Explosion03 = 0;
+AUDIOid AllAudio::Explosion5 = 0;
 AUDIOid AllAudio::Light03 = 0;
 AUDIOid AllAudio::Darkness02 = 0;
+AUDIOid AllAudio::Wind5 = 0;
 
 
 AUDIOid AllAudio::charge_voice1 = 0;
@@ -112,6 +114,8 @@ eF3DFX* AllFx::blood2 = NULL;
 eF3DFX* AllFx::DonzoNormal1 = NULL;
 eF3DFX* AllFx::DonzoHeavy3 = NULL;
 eF3DFX* AllFx::DonzoDamageRight = NULL;
+eF3DFX* AllFx::runsmoke = NULL;
+eF3DFX* AllFx::DonzoAttackH = NULL;
 WORLDid AllFx::gID = 0;
 
 eF3DFX* AllFx::getFX(eF3DFX* fx, SCENEid sID){
@@ -239,6 +243,14 @@ void FXcenter::initial(WORLDid gID, SCENEid sID)
 	AllFx::DonzoDamageRight =  new eF3DFX(sID);
 	AllFx::DonzoDamageRight->SetWorkPath("Data\\NTU4\\FXs");
 	AllFx::DonzoDamageRight->Load("DonzoDamageRight");
+
+	AllFx::runsmoke =  new eF3DFX(sID);
+	AllFx::runsmoke->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::runsmoke->Load("runsmoke");
+
+	AllFx::DonzoAttackH =  new eF3DFX(sID);
+	AllFx::DonzoAttackH->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::DonzoAttackH->Load("DonzoAttackH");
 }
 void FXcenter::playFX( eF3DFX* fx )
 {
@@ -515,7 +527,11 @@ void loadAll( WORLDid gID, SCENEid sID )
 	AllAudio::Explosion03 = gw.CreateAudio();
 	audio.Object(AllAudio::Explosion03);
 	audio.Load("050-Explosion03");
-	
+
+	AllAudio::Explosion5 = gw.CreateAudio();
+	audio.Object(AllAudio::Explosion5);
+	audio.Load("Explosion5");
+
 	AllAudio::Light03 = gw.CreateAudio();
 	audio.Object(AllAudio::Light03);
 	audio.Load("137-Light03");
@@ -523,7 +539,10 @@ void loadAll( WORLDid gID, SCENEid sID )
 	AllAudio::Darkness02 = gw.CreateAudio();
 	audio.Object(AllAudio::Darkness02);
 	audio.Load("139-Darkness02");
-	
+
+	AllAudio::Wind5 = gw.CreateAudio();
+	audio.Object(AllAudio::Wind5);
+	audio.Load("Wind5");
 		//mix
 	AllAudio::charge_voice1 = gw.CreateAudio();
 	audio.Object(AllAudio::charge_voice1);

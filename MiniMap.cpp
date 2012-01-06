@@ -25,7 +25,7 @@ MiniMap::MiniMap(WORLDid gID, SCENEid sMiniID, int x_pos, int y_pos, int width, 
 	miniTerrain.Object(miniTerrainID);
 	gw.SetObjectPath("Data\\NTU4\\Scenes");
 	miniTerrain.Load("terrain");
-	miniTerrain.SetOpacity(0.5f);
+	miniTerrain.SetOpacity(0.8f);
 
 	// create a camera stand for minimap
 	miniMapStandID = miniScene.CreateObject(ROOT);

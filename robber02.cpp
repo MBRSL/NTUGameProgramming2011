@@ -3,7 +3,7 @@
 #include "OurActor.h"
 #include "OurAction.h"
 
-const float Robber02::ATTACK_RATE = 0.015f;
+const float Robber02::ATTACK_RATE = 0.10f;
 
 Robber02::Robber02( WORLDid gID, SCENEid sID )
 {
@@ -73,7 +73,7 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	ourAttack1Action->keyFrames[0]->start_angle = 340;
 	ourAttack1Action->keyFrames[0]->plus_angle = 40;
 	ourAttack1Action->keyFrames[0]->valid_dis = 170;
-	ourAttack1Action->keyFrames[0]->damage_pt = 20;
+	ourAttack1Action->keyFrames[0]->damage_pt = 40;
 	//sound
 		ourAttack1Action->numOfAudioFrames = 1;
 		ourAttack1Action->audioFrames = new OurAudioFrame*[2];
@@ -95,7 +95,7 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	ourAttack2Action->keyFrames[0]->start_angle = 290;
 	ourAttack2Action->keyFrames[0]->plus_angle = 250;
 	ourAttack2Action->keyFrames[0]->valid_dis = 160;
-	ourAttack2Action->keyFrames[0]->damage_pt = 10;
+	ourAttack2Action->keyFrames[0]->damage_pt = 30;
 	//sound
 		ourAttack2Action->numOfAudioFrames = 1;
 		ourAttack2Action->audioFrames = new OurAudioFrame*[2];
@@ -118,7 +118,7 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	ourHeavyAttackAction->keyFrames[0]->start_angle = 330;
 	ourHeavyAttackAction->keyFrames[0]->plus_angle = 120;
 	ourHeavyAttackAction->keyFrames[0]->valid_dis = 130;
-	ourHeavyAttackAction->keyFrames[0]->damage_pt = 10;
+	ourHeavyAttackAction->keyFrames[0]->damage_pt = 60;
 	//sound
 		ourHeavyAttackAction->numOfAudioFrames = 2;
 		ourHeavyAttackAction->audioFrames = new OurAudioFrame*[2];

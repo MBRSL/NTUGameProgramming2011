@@ -66,8 +66,10 @@ public:
 	static AUDIOid Thunder02;
 	static AUDIOid Thunder03;
 	static AUDIOid Explosion03;
+	static AUDIOid Explosion5;
 	static AUDIOid Light03;
 	static AUDIOid Darkness02;
+	static AUDIOid Wind5;
 //mix
 	static AUDIOid charge_voice1;
 };
@@ -98,6 +100,8 @@ public:
 	static eF3DFX* DonzoNormal1;
 	static eF3DFX* DonzoHeavy3;
 	static eF3DFX* DonzoDamageRight;
+	static eF3DFX* runsmoke;
+	static eF3DFX* DonzoAttackH;
 private:
 	
 };

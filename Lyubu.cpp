@@ -6,7 +6,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 {
 	FnScene scene;
 
-	HP_MAX = 1000;
+	HP_MAX = 2000;
 	HP = HP_MAX;
 
 	pos_begin[0]=3569.0;
@@ -92,16 +92,8 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	ourIdleAction->type.value = LyubuAction::ACTION_IDLE();
 
 	current_OurAction = ourIdleAction;
-	//RUN
-	/*
-	ourRunAction = new OurAction::Builder()	->actID(actor.GetBodyAction(NULL, "Run"))
-											->defense_pt(0)
-											->frames_num(0)
-											->play_speed(1)
-											->priority(0)
-											->type(LyubuAction::ACTION_WALK())
-											->build();
-	*/
+
+
 	ourRunAction = new OurAction();
 	ourRunAction->actID = actor.GetBodyAction(NULL, "Run");
 	ourRunAction->frames_num = 0;
@@ -119,7 +111,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		ourRunAction->fxFrames = new OurFxFrame*[1];
 		ourRunAction->fxFrames[0] = new OurFxFrame;
 		ourRunAction->fxFrames[0]->frameNO = 1;
-		ourRunAction->fxFrames[0]->fxName = AllFx::WeaponSmoke;
+		ourRunAction->fxFrames[0]->fxName = AllFx::runsmoke;
 
 
 	//ATTACKS
@@ -306,7 +298,6 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		ourHeavyAttack1Action->audioFrames[3] = new OurAudioFrame;
 		ourHeavyAttack1Action->audioFrames[3]->frameNO = 10;
 		ourHeavyAttack1Action->audioFrames[3]->audioID = AllAudio::Light03;
-
 		//fx
 		ourHeavyAttack1Action->numOfFxFrames = 1;
 		ourHeavyAttack1Action->fxFrames = new OurFxFrame*[1];
@@ -352,7 +343,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		ourHeavyAttack2Action->audioFrames[1]->audioID = AllAudio::weapon_attack;
 		ourHeavyAttack2Action->audioFrames[2] = new OurAudioFrame;
 		ourHeavyAttack2Action->audioFrames[2]->frameNO = 3;
-		ourHeavyAttack2Action->audioFrames[2]->audioID = AllAudio::Thunder02;
+		ourHeavyAttack2Action->audioFrames[2]->audioID = AllAudio::Wind5;
 		ourHeavyAttack2Action->audioFrames[3] = new OurAudioFrame;
 		ourHeavyAttack2Action->audioFrames[3]->frameNO = 4;
 		ourHeavyAttack2Action->audioFrames[3]->audioID = AllAudio::Darkness02;
@@ -401,7 +392,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		ourHeavyAttack3Action->audioFrames[1]->audioID = AllAudio::weapon_attack;
 		ourHeavyAttack3Action->audioFrames[2] = new OurAudioFrame;
 		ourHeavyAttack3Action->audioFrames[2]->frameNO = 15;
-		ourHeavyAttack3Action->audioFrames[2]->audioID = AllAudio::Thunder03;
+		ourHeavyAttack3Action->audioFrames[2]->audioID = AllAudio::Explosion5;
 
 		//fx
 		ourHeavyAttack3Action->numOfFxFrames = 1;

@@ -1,6 +1,6 @@
 #include "Donzo.h"
 #include "function.h"
-const float Donzo::ATTACK_RATE = 0.20f;
+const float Donzo::ATTACK_RATE = 0.30f;
 Donzo::Donzo( WORLDid gID, SCENEid sID )
 {
 	FnWorld gw;
@@ -98,13 +98,13 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 		ourHeavyAttack1Action->keyFrames[0]->start_angle = 270;
 		ourHeavyAttack1Action->keyFrames[0]->plus_angle = 100;
 		ourHeavyAttack1Action->keyFrames[0]->valid_dis = 200;
-		ourHeavyAttack1Action->keyFrames[0]->damage_pt = 100;
+		ourHeavyAttack1Action->keyFrames[0]->damage_pt = 40;
 		ourHeavyAttack1Action->keyFrames[1] = new OurFrame;
 		ourHeavyAttack1Action->keyFrames[1]->frameNO = 42;
 		ourHeavyAttack1Action->keyFrames[1]->start_angle = 270;
 		ourHeavyAttack1Action->keyFrames[1]->plus_angle = 180;
 		ourHeavyAttack1Action->keyFrames[1]->valid_dis = 200;
-		ourHeavyAttack1Action->keyFrames[1]->damage_pt = 90;
+		ourHeavyAttack1Action->keyFrames[1]->damage_pt = 50;
 		ourHeavyAttack1Action->keyFrames[2] = new OurFrame;
 		ourHeavyAttack1Action->keyFrames[2]->frameNO = 70;
 		ourHeavyAttack1Action->keyFrames[2]->start_angle = 0;
@@ -128,7 +128,7 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 		ourHeavyAttack1Action->fxFrames = new OurFxFrame*[1];
 		ourHeavyAttack1Action->fxFrames[0] = new OurFxFrame;
 		ourHeavyAttack1Action->fxFrames[0]->frameNO = 1;
-		ourHeavyAttack1Action->fxFrames[0]->fxName = AllFx::DonzoHeavy3;
+		ourHeavyAttack1Action->fxFrames[0]->fxName = AllFx::DonzoAttackH;
 
 
 
@@ -148,13 +148,13 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 		ourHeavyAttack2Action->keyFrames[0]->start_angle = 0;
 		ourHeavyAttack2Action->keyFrames[0]->plus_angle = 270;
 		ourHeavyAttack2Action->keyFrames[0]->valid_dis = 190;
-		ourHeavyAttack2Action->keyFrames[0]->damage_pt = 80;
+		ourHeavyAttack2Action->keyFrames[0]->damage_pt = 70;
 		ourHeavyAttack2Action->keyFrames[1] = new OurFrame;
 		ourHeavyAttack2Action->keyFrames[1]->frameNO = 41;
 		ourHeavyAttack2Action->keyFrames[1]->start_angle = 270;
 		ourHeavyAttack2Action->keyFrames[1]->plus_angle = 180;
 		ourHeavyAttack2Action->keyFrames[1]->valid_dis = 200;
-		ourHeavyAttack2Action->keyFrames[1]->damage_pt = 120;
+		ourHeavyAttack2Action->keyFrames[1]->damage_pt = 80;
 		//sound
 		ourHeavyAttack2Action->numOfAudioFrames = 4;
 		ourHeavyAttack2Action->audioFrames = new OurAudioFrame*[4];
@@ -239,17 +239,20 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 		ourDieAction->fxFrames[0]->frameNO = 1;
 		ourDieAction->fxFrames[0]->fxName = AllFx::smoke;
 		//sound
-		ourDieAction->numOfAudioFrames = 3;
+		ourDieAction->numOfAudioFrames = 4;
 		ourDieAction->audioFrames = new OurAudioFrame*[3];
 		ourDieAction->audioFrames[0] = new OurAudioFrame;
-		ourDieAction->audioFrames[0]->frameNO = 1;
+		ourDieAction->audioFrames[0]->frameNO = 20;
 		ourDieAction->audioFrames[0]->audioID = AllAudio::donzo_damaged_miserable;
 		ourDieAction->audioFrames[1] = new OurAudioFrame;
-		ourDieAction->audioFrames[1]->frameNO = 0;
+		ourDieAction->audioFrames[1]->frameNO = 1;
 		ourDieAction->audioFrames[1]->audioID = AllAudio::Attack10;
 		ourDieAction->audioFrames[2] = new OurAudioFrame;
-		ourDieAction->audioFrames[2]->frameNO = 160;
-		ourDieAction->audioFrames[2]->audioID = AllAudio::Attack16;
+		ourDieAction->audioFrames[2]->frameNO = 100;
+		ourDieAction->audioFrames[2]->audioID = AllAudio::donzo_damaged_miserable;
+		ourDieAction->audioFrames[3] = new OurAudioFrame;
+		ourDieAction->audioFrames[3]->frameNO = 160;
+		ourDieAction->audioFrames[3]->audioID = AllAudio::Attack16;
 	
 	//blood
 	{

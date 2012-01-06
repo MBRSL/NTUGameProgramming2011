@@ -92,6 +92,7 @@ float OurActor::getCurrentFrame()
 
 bool OurActor::playActionAudio()
 {
+	bool played = false;
 	if( current_OurAction->numOfAudioFrames > 0 )
 	{
 		FnAudio audio;
@@ -102,11 +103,11 @@ bool OurActor::playActionAudio()
 					audio.Object(current_OurAction->audioFrames[i]->audioID);
 					audio.SetVolume(500);
 					audio.Play(ONCE);
-					return true;
+					played = true;
 			}
 		}
 	}
-	return false;
+	return played;
 }
 
 bool OurActor::playActionFx()
