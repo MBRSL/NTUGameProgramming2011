@@ -299,7 +299,7 @@ void AllMusic::play( MEDIAid bgm, int type )
 	current_music = bgm;
 	mP->Object(bgm);
 	//mP->SetVolume(0.8);
-	//mP->Play(type);
+	mP->Play(type);
 }
 
 //method
