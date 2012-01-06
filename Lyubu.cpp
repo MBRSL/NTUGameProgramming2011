@@ -28,39 +28,47 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	s2D = gw.CreateScene(1);
 	scene2D.Object(s2D);
 	scene2D.SetSpriteWorldSize(800, 600);
-		//face img
-	face_img = scene2D.CreateSprite();
-	sp.Object(face_img);
-	sp.SetRectArea(NULL, 200, 200, NULL, "597_2", 0, TRUE, 0, 0, 0);   // load an image & resize it
-	sp.SetRectPosition(10, 10, 0);   // put at (200, 200) position
+		//face
+		face_x = 10;
+		face_y = 10;
+		face_length = 200;
+		face_height = 200;
+
+		faceID = scene2D.CreateSprite();
+		sp.Object(faceID);
+		sp.SetRectArea(NULL, face_length, face_height, NULL, "face1", 0, TRUE, 0, 1, 3);   // load an image & resize it
+		sp.SetRectPosition(face_x, face_y, 0);   // put at (200, 200) position
+
+		face.Object(faceID);
 		//lifebar img
-	lifebar_x = 180;
-	lifebar_y = 50;
-	lifebar_length = 500;
-	lifebar_height = 25;
+		lifebar_x = 180;
+		lifebar_y = 50;
+		lifebar_length = 500;
+		lifebar_height = 25;
 
-	lifebar_frameID = scene2D.CreateSprite();
-	sp.Object(lifebar_frameID);
-	sp.SetRectArea(NULL, lifebar_length, lifebar_height, NULL, "lifebar2", 0, TRUE, 13, 0, 0);
-	sp.SetRectPosition(lifebar_x, lifebar_y, 0);
+		lifebar_frameID = scene2D.CreateSprite();
+		sp.Object(lifebar_frameID);
+		sp.SetRectArea(NULL, lifebar_length, lifebar_height, NULL, "lifebar2", 0, TRUE, 13, 0, 0);
+		sp.SetRectPosition(lifebar_x, lifebar_y, 0);
 
-	lifebarID = scene2D.CreateSprite();
-	sp.Object(lifebarID);
-	sp.SetRectArea(NULL, lifebar_length, lifebar_height, NULL, "lifebar1", 0, TRUE, 0, 0, 0);
-	sp.SetRectPosition(lifebar_x, lifebar_y, 0);
+		lifebarID = scene2D.CreateSprite();
+		sp.Object(lifebarID);
+		sp.SetRectArea(NULL, lifebar_length, lifebar_height, NULL, "lifebar1", 0, TRUE, 0, 0, 0);
+		sp.SetRectPosition(lifebar_x, lifebar_y, 0);
 
-	lifebar.Object(lifebarID);
+		lifebar.Object(lifebarID);
 		//skill
-	skill_length=400;
-	skill_height=140;
-	skill_x=200;
-	skill_y=450;
-	skillID = scene2D.CreateSprite();
-	sp.Object(skillID);
-	//sp.SetRectArea(NULL, skill_length, skill_height, NULL, "skill1", 0, TRUE, 0, 0, 0);
-	//sp.SetRectPosition(skill_x, skill_y, 0);
-	
-	skill.Object(skillID);
+		skill_length=400;
+		skill_height=140;
+		skill_x=200;
+		skill_y=450;
+
+		skillID = scene2D.CreateSprite();
+		sp.Object(skillID);
+		//sp.SetRectArea(NULL, skill_length, skill_height, NULL, "skill1", 0, TRUE, 0, 0, 0);
+		//sp.SetRectPosition(skill_x, skill_y, 0);
+		
+		skill.Object(skillID);
 	//2D
 
 
@@ -556,11 +564,17 @@ void Lyubu::damaged( int attack_pt, ACTORid attacker, float angle )
 	if( HP <= HP_MAX/2 && AllMusic::current_music == AllMusic::stage )
 	{
 		AllMusic::play( AllMusic::warning, LOOP );
+		gw.SetTexturePath(AllImg::ImgDirAddr);
+		face.SetRectArea(NULL, face_length, face_height, NULL, "face2", 0, TRUE, 1, 0, 0);   // load an image & resize it
+		face.SetRectPosition(face_x, face_y, 0);   // put at (200, 200) position
 	}
 	else if( HP <= 0 )
 	{
 		sendAction(ourDieAction);
 		HP = 0;
+		gw.SetTexturePath(AllImg::ImgDirAddr);
+		face.SetRectArea(NULL, face_length, face_height, NULL, "face3", 0, TRUE, 1, 0, 0);   // load an image & resize it
+		face.SetRectPosition(face_x, face_y, 0);   // put at (200, 200) position
 	}
 	else if(attack_pt > 100)
 	{

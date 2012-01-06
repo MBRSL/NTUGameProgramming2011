@@ -58,10 +58,15 @@ class Lyubu : public OurActor{
 		void actionChangeSignal( OurAction *last_action, OurAction *current_action );
 
 		//2D
-		FnSprite lifebar, skill;
-		int lifebar_x, lifebar_y, skill_x, skill_y;
-		float lifebar_length, lifebar_height, skill_length, skill_height;
-		OBJECTid lifebar_frameID, lifebarID, face_img, skillID;
 		SCENEid s2D;
+		FnSprite lifebar, skill, face;
+		OBJECTid lifebar_frameID, lifebarID, faceID, skillID;
+		int lifebar_x, lifebar_y;
+		int skill_x, skill_y;
+		int face_x, face_y;
+		float lifebar_length, lifebar_height;
+		float skill_length, skill_height;
+		float face_length, face_height;
+		
 };
 #endif

@@ -1,6 +1,6 @@
 #include "Donzo.h"
 #include "function.h"
-const float Donzo::ATTACK_RATE = 0.10f;
+const float Donzo::ATTACK_RATE = 0.20f;
 Donzo::Donzo( WORLDid gID, SCENEid sID )
 {
 	FnWorld gw;
@@ -123,6 +123,13 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 		ourHeavyAttack1Action->audioFrames[2] = new OurAudioFrame;
 		ourHeavyAttack1Action->audioFrames[2]->frameNO = 70;
 		ourHeavyAttack1Action->audioFrames[2]->audioID = AllAudio::donzo_attack_heavy1;
+		//fx
+		ourHeavyAttack1Action->numOfFxFrames = 1;
+		ourHeavyAttack1Action->fxFrames = new OurFxFrame*[1];
+		ourHeavyAttack1Action->fxFrames[0] = new OurFxFrame;
+		ourHeavyAttack1Action->fxFrames[0]->frameNO = 1;
+		ourHeavyAttack1Action->fxFrames[0]->fxName = AllFx::DonzoHeavy3;
+
 
 
 	//ourHeavyAttack2Action

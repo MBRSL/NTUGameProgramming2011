@@ -298,7 +298,8 @@ void AllMusic::play( MEDIAid bgm, int type )
 	mP->Stop();
 	current_music = bgm;
 	mP->Object(bgm);
-	mP->Play(type);
+	//mP->SetVolume(0.8);
+	//mP->Play(type);
 }
 
 //method
@@ -369,6 +370,7 @@ void loadAll( WORLDid gID, SCENEid sID )
 	AllAudio::lyubu_attack_light = gw.CreateAudio();
 	audio.Object(AllAudio::lyubu_attack_light);
 	audio.Load("lyubu_attack_light");
+	//audio.SetVolume(300);
 
 	AllAudio::lyubu_attack_medium = gw.CreateAudio();
 	audio.Object(AllAudio::lyubu_attack_medium);

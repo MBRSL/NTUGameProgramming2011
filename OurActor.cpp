@@ -100,6 +100,7 @@ bool OurActor::playActionAudio()
 			if( current_OurAction->audioFrames[i]->frameNO <= current_frame && 
 				current_OurAction->audioFrames[i]->frameNO >= current_frame - current_OurAction->play_speed ){
 					audio.Object(current_OurAction->audioFrames[i]->audioID);
+					audio.SetVolume(500);
 					audio.Play(ONCE);
 					return true;
 			}
