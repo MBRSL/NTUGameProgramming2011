@@ -31,6 +31,7 @@ class Lyubu : public OurActor{
 
 		void dealFlag();
 	public:
+		FnWorld gw;
 		//the fly
 		//FnActor actor;
 		//vars
@@ -48,10 +49,19 @@ class Lyubu : public OurActor{
 		OurAction *ourDieAction;
 		float pos_begin[3];
 		float MOVE_SPEED, MOVE_ANGLE;
+
 		//method
 		Lyubu( WORLDid , SCENEid );
 		void damaged(int , ACTORid , float );
 		void dealKey();
 		void Rotate(int degree, float cameraPos[]);
+		void actionChangeSignal( OurAction *last_action, OurAction *current_action );
+
+		//2D
+		FnSprite lifebar, skill;
+		int lifebar_x, lifebar_y, skill_x, skill_y;
+		float lifebar_length, lifebar_height, skill_length, skill_height;
+		OBJECTid lifebar_frameID, lifebarID, face_img, skillID;
+		SCENEid s2D;
 };
 #endif

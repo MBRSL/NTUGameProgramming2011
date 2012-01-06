@@ -1,12 +1,12 @@
 #include "Donzo.h"
 #include "function.h"
-const float Donzo::ATTACK_RATE = 0.01f;
+const float Donzo::ATTACK_RATE = 0.10f;
 Donzo::Donzo( WORLDid gID, SCENEid sID )
 {
 	FnWorld gw;
 	FnScene scene;
 
-	HP_MAX = 9000;
+	HP_MAX = 1000;
 	HP = HP_MAX;
 
 	pos_begin[0]=3469.0;
@@ -58,14 +58,30 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 	ourAttack1Action->play_speed = 1;
 	ourAttack1Action->priority = 5;
 	ourAttack1Action->type.value = Action_type::ACTION_ATTACK();
-	ourAttack1Action->numOfKeyFrames = 1;
-	ourAttack1Action->keyFrames = new OurFrame*[1];
-	ourAttack1Action->keyFrames[0] = new OurFrame;
-	ourAttack1Action->keyFrames[0]->frameNO = 10;
-	ourAttack1Action->keyFrames[0]->start_angle = 320;
-	ourAttack1Action->keyFrames[0]->plus_angle = 80;
-	ourAttack1Action->keyFrames[0]->valid_dis = 200;
-	ourAttack1Action->keyFrames[0]->damage_pt = 100;
+		//key
+		ourAttack1Action->numOfKeyFrames = 1;
+		ourAttack1Action->keyFrames = new OurFrame*[1];
+		ourAttack1Action->keyFrames[0] = new OurFrame;
+		ourAttack1Action->keyFrames[0]->frameNO = 10;
+		ourAttack1Action->keyFrames[0]->start_angle = 320;
+		ourAttack1Action->keyFrames[0]->plus_angle = 80;
+		ourAttack1Action->keyFrames[0]->valid_dis = 200;
+		ourAttack1Action->keyFrames[0]->damage_pt = 100;
+		//sound
+		ourAttack1Action->numOfAudioFrames = 2;
+		ourAttack1Action->audioFrames = new OurAudioFrame*[2];
+		ourAttack1Action->audioFrames[0] = new OurAudioFrame;
+		ourAttack1Action->audioFrames[0]->frameNO = 7;
+		ourAttack1Action->audioFrames[0]->audioID = AllAudio::donzo_attack_light;
+		ourAttack1Action->audioFrames[1] = new OurAudioFrame;
+		ourAttack1Action->audioFrames[1]->frameNO = 8;
+		ourAttack1Action->audioFrames[1]->audioID = AllAudio::Thunder01;
+		//fx
+		ourAttack1Action->numOfFxFrames = 1;
+		ourAttack1Action->fxFrames = new OurFxFrame*[1];
+		ourAttack1Action->fxFrames[0] = new OurFxFrame;
+		ourAttack1Action->fxFrames[0]->frameNO = 1;
+		ourAttack1Action->fxFrames[0]->fxName = AllFx::DonzoNormal1;
 
 	ourHeavyAttack1Action = new OurAction();
 	ourHeavyAttack1Action->actID = actor.GetBodyAction(NULL, "AttackH");
@@ -74,27 +90,42 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 	ourHeavyAttack1Action->play_speed = 1;
 	ourHeavyAttack1Action->priority = ourAttack1Action->priority + 10;
 	ourHeavyAttack1Action->type.value = Action_type::ACTION_ATTACK();
-	ourHeavyAttack1Action->numOfKeyFrames = 3;
-	ourHeavyAttack1Action->keyFrames = new OurFrame*[3];
-	ourHeavyAttack1Action->keyFrames[0] = new OurFrame;
-	ourHeavyAttack1Action->keyFrames[0]->frameNO = 23;
-	ourHeavyAttack1Action->keyFrames[0]->start_angle = 270;
-	ourHeavyAttack1Action->keyFrames[0]->plus_angle = 100;
-	ourHeavyAttack1Action->keyFrames[0]->valid_dis = 200;
-	ourHeavyAttack1Action->keyFrames[0]->damage_pt = 100;
-	ourHeavyAttack1Action->keyFrames[1] = new OurFrame;
-	ourHeavyAttack1Action->keyFrames[1]->frameNO = 42;
-	ourHeavyAttack1Action->keyFrames[1]->start_angle = 270;
-	ourHeavyAttack1Action->keyFrames[1]->plus_angle = 180;
-	ourHeavyAttack1Action->keyFrames[1]->valid_dis = 200;
-	ourHeavyAttack1Action->keyFrames[1]->damage_pt = 90;
-	ourHeavyAttack1Action->keyFrames[2] = new OurFrame;
-	ourHeavyAttack1Action->keyFrames[2]->frameNO = 70;
-	ourHeavyAttack1Action->keyFrames[2]->start_angle = 0;
-	ourHeavyAttack1Action->keyFrames[2]->plus_angle = 360;
-	ourHeavyAttack1Action->keyFrames[2]->valid_dis = 200;
-	ourHeavyAttack1Action->keyFrames[2]->damage_pt = 80;
+		//key
+		ourHeavyAttack1Action->numOfKeyFrames = 3;
+		ourHeavyAttack1Action->keyFrames = new OurFrame*[3];
+		ourHeavyAttack1Action->keyFrames[0] = new OurFrame;
+		ourHeavyAttack1Action->keyFrames[0]->frameNO = 23;
+		ourHeavyAttack1Action->keyFrames[0]->start_angle = 270;
+		ourHeavyAttack1Action->keyFrames[0]->plus_angle = 100;
+		ourHeavyAttack1Action->keyFrames[0]->valid_dis = 200;
+		ourHeavyAttack1Action->keyFrames[0]->damage_pt = 100;
+		ourHeavyAttack1Action->keyFrames[1] = new OurFrame;
+		ourHeavyAttack1Action->keyFrames[1]->frameNO = 42;
+		ourHeavyAttack1Action->keyFrames[1]->start_angle = 270;
+		ourHeavyAttack1Action->keyFrames[1]->plus_angle = 180;
+		ourHeavyAttack1Action->keyFrames[1]->valid_dis = 200;
+		ourHeavyAttack1Action->keyFrames[1]->damage_pt = 90;
+		ourHeavyAttack1Action->keyFrames[2] = new OurFrame;
+		ourHeavyAttack1Action->keyFrames[2]->frameNO = 70;
+		ourHeavyAttack1Action->keyFrames[2]->start_angle = 0;
+		ourHeavyAttack1Action->keyFrames[2]->plus_angle = 360;
+		ourHeavyAttack1Action->keyFrames[2]->valid_dis = 200;
+		ourHeavyAttack1Action->keyFrames[2]->damage_pt = 80;
+		//sound
+		ourHeavyAttack1Action->numOfAudioFrames = 3;
+		ourHeavyAttack1Action->audioFrames = new OurAudioFrame*[3];
+		ourHeavyAttack1Action->audioFrames[0] = new OurAudioFrame;
+		ourHeavyAttack1Action->audioFrames[0]->frameNO = 23;
+		ourHeavyAttack1Action->audioFrames[0]->audioID = AllAudio::donzo_attack_medium;
+		ourHeavyAttack1Action->audioFrames[1] = new OurAudioFrame;
+		ourHeavyAttack1Action->audioFrames[1]->frameNO = 42;
+		ourHeavyAttack1Action->audioFrames[1]->audioID = AllAudio::donzo_attack_heavy1;
+		ourHeavyAttack1Action->audioFrames[2] = new OurAudioFrame;
+		ourHeavyAttack1Action->audioFrames[2]->frameNO = 70;
+		ourHeavyAttack1Action->audioFrames[2]->audioID = AllAudio::donzo_attack_heavy1;
 
+
+	//ourHeavyAttack2Action
 	ourHeavyAttack2Action = new OurAction();
 	ourHeavyAttack2Action->actID = actor.GetBodyAction(NULL, "HeavyAttack");
 	ourHeavyAttack2Action->isAttack = true;
@@ -102,48 +133,90 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 	ourHeavyAttack2Action->play_speed = 1;
 	ourHeavyAttack2Action->priority = ourAttack1Action->priority + 10;
 	ourHeavyAttack2Action->type.value = Action_type::ACTION_ATTACK();
-	ourHeavyAttack2Action->numOfKeyFrames = 2;
-	ourHeavyAttack2Action->keyFrames = new OurFrame*[2];
-	ourHeavyAttack2Action->keyFrames[0] = new OurFrame;
-	ourHeavyAttack2Action->keyFrames[0]->frameNO = 31;
-	ourHeavyAttack2Action->keyFrames[0]->start_angle = 0;
-	ourHeavyAttack2Action->keyFrames[0]->plus_angle = 270;
-	ourHeavyAttack2Action->keyFrames[0]->valid_dis = 190;
-	ourHeavyAttack2Action->keyFrames[0]->damage_pt = 80;
-	ourHeavyAttack2Action->keyFrames[1] = new OurFrame;
-	ourHeavyAttack2Action->keyFrames[1]->frameNO = 41;
-	ourHeavyAttack2Action->keyFrames[1]->start_angle = 270;
-	ourHeavyAttack2Action->keyFrames[1]->plus_angle = 180;
-	ourHeavyAttack2Action->keyFrames[1]->valid_dis = 200;
-	ourHeavyAttack2Action->keyFrames[1]->damage_pt = 120;
+		//key
+		ourHeavyAttack2Action->numOfKeyFrames = 2;
+		ourHeavyAttack2Action->keyFrames = new OurFrame*[2];
+		ourHeavyAttack2Action->keyFrames[0] = new OurFrame;
+		ourHeavyAttack2Action->keyFrames[0]->frameNO = 31;
+		ourHeavyAttack2Action->keyFrames[0]->start_angle = 0;
+		ourHeavyAttack2Action->keyFrames[0]->plus_angle = 270;
+		ourHeavyAttack2Action->keyFrames[0]->valid_dis = 190;
+		ourHeavyAttack2Action->keyFrames[0]->damage_pt = 80;
+		ourHeavyAttack2Action->keyFrames[1] = new OurFrame;
+		ourHeavyAttack2Action->keyFrames[1]->frameNO = 41;
+		ourHeavyAttack2Action->keyFrames[1]->start_angle = 270;
+		ourHeavyAttack2Action->keyFrames[1]->plus_angle = 180;
+		ourHeavyAttack2Action->keyFrames[1]->valid_dis = 200;
+		ourHeavyAttack2Action->keyFrames[1]->damage_pt = 120;
+		//sound
+		ourHeavyAttack2Action->numOfAudioFrames = 4;
+		ourHeavyAttack2Action->audioFrames = new OurAudioFrame*[4];
+		ourHeavyAttack2Action->audioFrames[0] = new OurAudioFrame;
+		ourHeavyAttack2Action->audioFrames[0]->frameNO = 28;
+		ourHeavyAttack2Action->audioFrames[0]->audioID = AllAudio::donzo_attack_medium;
+		ourHeavyAttack2Action->audioFrames[1] = new OurAudioFrame;
+		ourHeavyAttack2Action->audioFrames[1]->frameNO = 39;
+		ourHeavyAttack2Action->audioFrames[1]->audioID = AllAudio::donzo_attack_heavy2;
+		ourHeavyAttack2Action->audioFrames[2] = new OurAudioFrame;
+		ourHeavyAttack2Action->audioFrames[2]->frameNO = 0;
+		ourHeavyAttack2Action->audioFrames[2]->audioID = AllAudio::donzo_mousou2;
+		ourHeavyAttack2Action->audioFrames[3] = new OurAudioFrame;
+		ourHeavyAttack2Action->audioFrames[3]->frameNO = 3;
+		ourHeavyAttack2Action->audioFrames[3]->audioID = AllAudio::Explosion03;
+		//fx
+		ourHeavyAttack2Action->numOfFxFrames = 1;
+		ourHeavyAttack2Action->fxFrames = new OurFxFrame*[1];
+		ourHeavyAttack2Action->fxFrames[0] = new OurFxFrame;
+		ourHeavyAttack2Action->fxFrames[0]->frameNO = 1;
+		ourHeavyAttack2Action->fxFrames[0]->fxName = AllFx::DonzoHeavy3;
 
 	//DamageL
 	ourDamageLAction = new OurAction();
 	ourDamageLAction->actID = actor.GetBodyAction(NULL, "DamageL");
 	ourDamageLAction->frames_num = 0;
-	ourDamageLAction->play_speed = 1.5;
+	ourDamageLAction->play_speed = 1.0;
 	ourDamageLAction->priority = 100;
 	ourDamageLAction->type.value = DonzoAction::ACTION_DAMAGED();
-	//fx
-	ourDamageLAction->numOfFxFrames = 1;
-	ourDamageLAction->fxFrames = new OurFxFrame*[1];
-	ourDamageLAction->fxFrames[0] = new OurFxFrame;
-	ourDamageLAction->fxFrames[0]->frameNO = 1;
-	ourDamageLAction->fxFrames[0]->fxName = AllFx::SmallHurt01;
+		//fx
+		ourDamageLAction->numOfFxFrames = 1;
+		ourDamageLAction->fxFrames = new OurFxFrame*[1];
+		ourDamageLAction->fxFrames[0] = new OurFxFrame;
+		ourDamageLAction->fxFrames[0]->frameNO = 1;
+		ourDamageLAction->fxFrames[0]->fxName = AllFx::BigHurt01;
+		//sound
+		ourDamageLAction->numOfAudioFrames = 2;
+		ourDamageLAction->audioFrames = new OurAudioFrame*[2];
+		ourDamageLAction->audioFrames[0] = new OurAudioFrame;
+		ourDamageLAction->audioFrames[0]->frameNO = 0;
+		ourDamageLAction->audioFrames[0]->audioID = AllAudio::donzo_damaged_light;
+		ourDamageLAction->audioFrames[1] = new OurAudioFrame;
+		ourDamageLAction->audioFrames[1]->frameNO = 1;
+		ourDamageLAction->audioFrames[1]->audioID = AllAudio::Attack06;
+
 
 	//DamageH
 	ourDamageHAction = new OurAction();
 	ourDamageHAction->actID = actor.GetBodyAction(NULL, "DamageH");
 	ourDamageHAction->frames_num = 0;
-	ourDamageHAction->play_speed = 1.5;
+	ourDamageHAction->play_speed = 1.0;
 	ourDamageHAction->priority = 100;
 	ourDamageHAction->type.value = DonzoAction::ACTION_DAMAGED();
-	//fx
-	ourDamageHAction->numOfFxFrames = 1;
-	ourDamageHAction->fxFrames = new OurFxFrame*[1];
-	ourDamageHAction->fxFrames[0] = new OurFxFrame;
-	ourDamageHAction->fxFrames[0]->frameNO = 1;
-	ourDamageHAction->fxFrames[0]->fxName = AllFx::BigHurt01;
+		//fx
+		ourDamageHAction->numOfFxFrames = 1;
+		ourDamageHAction->fxFrames = new OurFxFrame*[1];
+		ourDamageHAction->fxFrames[0] = new OurFxFrame;
+		ourDamageHAction->fxFrames[0]->frameNO = 1;
+		ourDamageHAction->fxFrames[0]->fxName = AllFx::BigHurt02;
+		//ourDamageHAction->fxFrames[0]->fxName = AllFx::DonzoDamageRight;
+		//sound
+		ourDamageHAction->numOfAudioFrames = 2;
+		ourDamageHAction->audioFrames = new OurAudioFrame*[2];
+		ourDamageHAction->audioFrames[0] = new OurAudioFrame;
+		ourDamageHAction->audioFrames[0]->frameNO = 0;
+		ourDamageHAction->audioFrames[0]->audioID = AllAudio::donzo_damaged_heavy;
+		ourDamageHAction->audioFrames[1] = new OurAudioFrame;
+		ourDamageHAction->audioFrames[1]->frameNO = 1;
+		ourDamageHAction->audioFrames[1]->audioID = AllAudio::Attack12;
 
 	//Die
 	ourDieAction = new OurAction();
@@ -152,13 +225,25 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 	ourDieAction->play_speed = 1;
 	ourDieAction->priority = 1000;
 	ourDieAction->type.value = DonzoAction::ACTION_DIE();
-	//fx
-	ourDieAction->numOfFxFrames = 1;
-	ourDieAction->fxFrames = new OurFxFrame*[1];
-	ourDieAction->fxFrames[0] = new OurFxFrame;
-	ourDieAction->fxFrames[0]->frameNO = 1;
-	ourDieAction->fxFrames[0]->fxName = AllFx::smoke;
-
+		//fx
+		ourDieAction->numOfFxFrames = 1;
+		ourDieAction->fxFrames = new OurFxFrame*[1];
+		ourDieAction->fxFrames[0] = new OurFxFrame;
+		ourDieAction->fxFrames[0]->frameNO = 1;
+		ourDieAction->fxFrames[0]->fxName = AllFx::smoke;
+		//sound
+		ourDieAction->numOfAudioFrames = 3;
+		ourDieAction->audioFrames = new OurAudioFrame*[3];
+		ourDieAction->audioFrames[0] = new OurAudioFrame;
+		ourDieAction->audioFrames[0]->frameNO = 1;
+		ourDieAction->audioFrames[0]->audioID = AllAudio::donzo_damaged_miserable;
+		ourDieAction->audioFrames[1] = new OurAudioFrame;
+		ourDieAction->audioFrames[1]->frameNO = 0;
+		ourDieAction->audioFrames[1]->audioID = AllAudio::Attack10;
+		ourDieAction->audioFrames[2] = new OurAudioFrame;
+		ourDieAction->audioFrames[2]->frameNO = 160;
+		ourDieAction->audioFrames[2]->audioID = AllAudio::Attack16;
+	
 	//blood
 	{
 		FnObject blood;
@@ -217,8 +302,12 @@ void Donzo::damaged( int attack_pt, ACTORid attacker, float angle )
 {
 	HP -= attack_pt;
 	bloodAdjust();
-	if( HP < 0 )
+	if( HP < 0 && current_OurAction->type!=Action_type::ACTION_DIE() )
+	{
+		HP = 0;
 		sendAction(ourDieAction);
+		AllMusic::play( AllMusic::win, ONCE );
+	}
 	else{
 		if( angle < 180 )
 			sendAction(ourDamageHAction);

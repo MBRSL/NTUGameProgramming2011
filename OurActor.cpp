@@ -53,12 +53,16 @@ bool OurActor::sendAction( OurAction* action )
 {
 	if( action->priority < current_OurAction->priority )
 		return false;
+
+	//will send
+	actionChangeSignal( current_OurAction, action );
 	current_OurAction = action;
 	if( action->type == Action_type::ACTION_DAMAGED() )
 	{
 		current_frame = 0;
 		actor.MakeCurrentAction(0, NULL, current_OurAction->actID);
 	}
+	
 	return true;
 }
 
@@ -112,10 +116,7 @@ bool OurActor::playActionFx()
 		{
 			if( current_OurAction->fxFrames[i]->frameNO <= current_frame && 
 				current_OurAction->fxFrames[i]->frameNO >= current_frame - current_OurAction->play_speed ){
-				
 					current_OurAction->fxFrames[i]->fx = AllFx::getFX(current_OurAction->fxFrames[i]->fxName, sID);
-
-
 					eF3DBaseFX *fx_sub;
 					float pos[3];
 					actor.GetWorldPosition(pos);
@@ -123,8 +124,8 @@ bool OurActor::playActionFx()
 					int numFX = current_OurAction->fxFrames[i]->fx->NumberFXs();
 					for (int j = 0; j < numFX; j++) {
 						fx_sub = current_OurAction->fxFrames[i]->fx->GetFX(j);
-						if( fx_sub == NULL )
-							continue;
+						//if( fx_sub == NULL )
+						//	continue;
 						char *parent_name = fx_sub->GetParentName();
 						OBJECTid oid = actor.GetBoneObject( parent_name );
 						if( oid != FAILED_ID )
@@ -140,8 +141,15 @@ bool OurActor::playActionFx()
 					}
 
 					FXcenter::playFX( current_OurAction->fxFrames[i]->fx );
+					
 			}
 		}
 	}
 	return false;
 }
+/*
+void OurActor::actionChangeSignal( OurAction *last_action, OurAction *current_action )
+{
+
+}
+*/

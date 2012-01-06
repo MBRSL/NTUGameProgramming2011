@@ -46,7 +46,8 @@ class OurEnemyActor : public OurActor{
 		float blood_width;
 
 		void bloodAdjust();
-		
+		void actionChangeSignal( OurAction *last_action, OurAction *current_action ){
+		}
 	private:
 		void flockingPosition(float *newPos, float *selfPos, float *targetPos, EnemyTeam **team, int teamCount);
 	
