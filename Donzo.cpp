@@ -1,6 +1,6 @@
 #include "Donzo.h"
 #include "function.h"
-const float Donzo::ATTACK_RATE = 0.30f;
+const float Donzo::ATTACK_RATE = 0.50f;
 Donzo::Donzo( WORLDid gID, SCENEid sID )
 {
 	FnWorld gw;

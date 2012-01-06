@@ -4,8 +4,8 @@
 #include "OurActor.h"
 #define PI 3.14159265
 #define AWARE_DISTANCE 500
-#define COMBAT_DISTANCE 150
-#define CROWDED_DISTANCE 80
+#define COMBAT_DISTANCE 140
+#define CROWDED_DISTANCE 100
 #define OVERLAP_DISTANCE 50
 #define SPEED 5
 

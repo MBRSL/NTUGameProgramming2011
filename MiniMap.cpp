@@ -36,6 +36,8 @@ MiniMap::MiniMap(WORLDid gID, SCENEid sMiniID, Lyubu *lyubu, int x_pos, int y_po
 	FnObject anchor;
 	anchor.Object(anchorID);
 	anchor.Load("arrowGreen");
+	float pos[]={0,0,10};
+	anchor.SetPosition(pos);
 
    // create a camera for minimap
 	miniMapCameraID = miniScene.CreateCamera(miniMapStandID);
@@ -64,7 +66,6 @@ void MiniMap::render(OBJECTid fronterID, Lyubu* lyubu, OurEnemyActor **enemyActo
 	lyubu->actor.GetWorldDirection(pos,NULL);
 	anchor_lyubu.Object(anchorID);
 	anchor_lyubu.SetWorldDirection(pos,NULL);
-	//anchor_lyubu.TurnRight(lyubu->angle_begin);
 	miniMapStand.Object(miniMapStandID);
 	mapRef.Object(fronterID);
 	miniMapStand.SetMatrix(mapRef.GetMatrix(FALSE), REPLACE);
@@ -77,6 +78,7 @@ void MiniMap::render(OBJECTid fronterID, Lyubu* lyubu, OurEnemyActor **enemyActo
 		anchor.Object(enemyActor[i]->anchorID);
 		anchor.SetMatrix(base.GetMatrix(FALSE), REPLACE);
 	}
+	
 
 	FnViewport vp;
 	vp.Object(vpMiniMapID);
