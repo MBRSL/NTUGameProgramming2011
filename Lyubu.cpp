@@ -33,8 +33,8 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		//face
 		face_x = 10;
 		face_y = 10;
-		face_length = 200;
-		face_height = 200;
+		face_length = 173;
+		face_height = 186;
 
 		faceID = scene2D.CreateSprite();
 		sp.Object(faceID);
@@ -43,10 +43,10 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 
 		face.Object(faceID);
 		//lifebar img
-		lifebar_x = 180;
-		lifebar_y = 50;
+		lifebar_x = 170;
+		lifebar_y = 10;
 		lifebar_length = 500;
-		lifebar_height = 25;
+		lifebar_height = 143;
 
 		lifebar_frameID = scene2D.CreateSprite();
 		sp.Object(lifebar_frameID);
@@ -55,7 +55,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 
 		lifebarID = scene2D.CreateSprite();
 		sp.Object(lifebarID);
-		sp.SetRectArea(NULL, lifebar_length, lifebar_height, NULL, "lifebar1", 0, TRUE, 0, 0, 0);
+		sp.SetRectArea(NULL, lifebar_length, lifebar_height, NULL, "lifebar_green", 0, TRUE, 0, 0, 0);
 		sp.SetRectPosition(lifebar_x, lifebar_y, 0);
 
 		lifebar.Object(lifebarID);
@@ -591,7 +591,10 @@ void Lyubu::damaged( int attack_pt, ACTORid attacker, float angle )
 	//lifebar
 	{
 		gw.SetTexturePath(AllImg::ImgDirAddr);
-		lifebar.SetRectArea(NULL, lifebar_length*HP/HP_MAX, lifebar_height, NULL, "lifebar1", 0, TRUE, 0, 0, 0);  
+		if( HP > HP_MAX/2 )
+		lifebar.SetRectArea(NULL, lifebar_length*HP/HP_MAX, lifebar_height, NULL, "lifebar_green", 0, FALSE, 0, 0, 0);  
+		else
+		lifebar.SetRectArea(NULL, lifebar_length*HP/HP_MAX, lifebar_height, NULL, "lifebar_red", 0, FALSE, 0, 0, 0);   
 	}
 }
 
