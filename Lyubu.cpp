@@ -242,10 +242,10 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		ourAttack4Action->keyFrames = new OurFrame*[1];
 		ourAttack4Action->keyFrames[0] = new OurFrame;
 		ourAttack4Action->keyFrames[0]->frameNO = 25;
-		ourAttack4Action->keyFrames[0]->start_angle = 340;
-		ourAttack4Action->keyFrames[0]->plus_angle = 40;
+		ourAttack4Action->keyFrames[0]->start_angle = 330;
+		ourAttack4Action->keyFrames[0]->plus_angle = 60;
 		ourAttack4Action->keyFrames[0]->valid_dis = 200;
-		ourAttack4Action->keyFrames[0]->damage_pt = 50;
+		ourAttack4Action->keyFrames[0]->damage_pt = 80;
 		//sound
 		ourAttack4Action->numOfAudioFrames = 4;
 		ourAttack4Action->audioFrames = new OurAudioFrame*[4];
@@ -261,6 +261,12 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		ourAttack4Action->audioFrames[3] = new OurAudioFrame;
 		ourAttack4Action->audioFrames[3]->frameNO = 21;
 		ourAttack4Action->audioFrames[3]->audioID = AllAudio::weapon_attack;
+		//fx
+		ourAttack4Action->numOfFxFrames = 1;
+		ourAttack4Action->fxFrames = new OurFxFrame*[1];
+		ourAttack4Action->fxFrames[0] = new OurFxFrame;
+		ourAttack4Action->fxFrames[0]->frameNO = 1;
+		ourAttack4Action->fxFrames[0]->fxName = AllFx::LyubuWeapon4;
 
 	ourHeavyAttack1Action = new OurAction();
 	ourHeavyAttack1Action->actID = actor.GetBodyAction(NULL, "HeavyAttack1");

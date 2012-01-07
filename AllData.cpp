@@ -97,6 +97,7 @@ eF3DFX* AllFx::Attack01 = NULL;
 eF3DFX* AllFx::LyubuWeapon1 = NULL;
 eF3DFX* AllFx::LyubuWeapon2 = NULL;
 eF3DFX* AllFx::LyubuWeapon3 = NULL;
+eF3DFX* AllFx::LyubuWeapon4 = NULL;
 eF3DFX* AllFx::LyubuHeavy2 = NULL;
 eF3DFX* AllFx::LyubuHeavy3 = NULL;
 eF3DFX* AllFx::SmallHurt01 = NULL;
@@ -175,6 +176,10 @@ void FXcenter::initial(WORLDid gID, SCENEid sID)
 	AllFx::LyubuWeapon3 =  new eF3DFX(sID);
 	AllFx::LyubuWeapon3->SetWorkPath("Data\\NTU4\\FXs");
 	AllFx::LyubuWeapon3->Load("LyubuWeapon3");
+
+	AllFx::LyubuWeapon4 =  new eF3DFX(sID);
+	AllFx::LyubuWeapon4->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::LyubuWeapon4->Load("LyubuWeapon4");
 
 	AllFx::LyubuHeavy2 =  new eF3DFX(sID);
 	AllFx::LyubuHeavy2->SetWorkPath("Data\\NTU4\\FXs");

@@ -83,6 +83,7 @@ public:
 	static eF3DFX* LyubuWeapon1;
 	static eF3DFX* LyubuWeapon2;
 	static eF3DFX* LyubuWeapon3;
+	static eF3DFX* LyubuWeapon4;
 	static eF3DFX* LyubuHeavy2;
 	static eF3DFX* LyubuHeavy3;
 	static eF3DFX* SmallHurt01;
