@@ -45,7 +45,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		//lifebar img
 		lifebar_x = 170;
 		lifebar_y = 10;
-		lifebar_length = 500;
+		lifebar_length = 550;
 		lifebar_height = 143;
 
 		lifebar_frameID = scene2D.CreateSprite();
