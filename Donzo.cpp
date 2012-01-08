@@ -185,7 +185,7 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 	ourDamageLAction = new OurAction();
 	ourDamageLAction->actID = actor.GetBodyAction(NULL, "DamageL");
 	ourDamageLAction->frames_num = 0;
-	ourDamageLAction->play_speed = 1.0;
+	ourDamageLAction->play_speed = 1;
 	ourDamageLAction->priority = 100;
 	ourDamageLAction->type.value = DonzoAction::ACTION_DAMAGED();
 		//fx
@@ -209,7 +209,7 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 	ourDamageHAction = new OurAction();
 	ourDamageHAction->actID = actor.GetBodyAction(NULL, "DamageH");
 	ourDamageHAction->frames_num = 0;
-	ourDamageHAction->play_speed = 1.0;
+	ourDamageHAction->play_speed = 1;
 	ourDamageHAction->priority = 100;
 	ourDamageHAction->type.value = DonzoAction::ACTION_DAMAGED();
 		//fx
@@ -314,20 +314,61 @@ bool Donzo::attackAgent(ACTORid enemyID)
 }
 void Donzo::damaged( int attack_pt, ACTORid attacker, float angle )
 {
-	HP -= attack_pt;
-	bloodAdjust();
-	if( HP < 0 && current_OurAction->type!=Action_type::ACTION_DIE() )
+	if( attack_pt >= 70 )
 	{
-		HP = 0;
-		sendAction(ourDieAction);
+		HP -= attack_pt;
+		bloodAdjust();
+		if( HP < 0 && current_OurAction->type!=Action_type::ACTION_DIE() )
+		{
+			HP = 0;
+			sendAction(ourDieAction);
 		KILLNUM++;
-		AllMusic::play( AllMusic::win, ONCE );
+			AllMusic::play( AllMusic::win, ONCE );
 		winFlag = 1;
+		}
+		else{
+			if( angle < 180 )
+				sendAction(ourDamageHAction);
+			else
+				sendAction(ourDamageLAction);
+		}
 	}
-	else{
-		if( angle < 180 )
-			sendAction(ourDamageHAction);
-		else
-			sendAction(ourDamageLAction);
+	else
+	{
+		static int counter = 0;
+		FnAudio audio;
+
+		eF3DFX *fx = AllFx::getFX(AllFx::DonzoDefence, sID);
+					eF3DBaseFX *fx_sub;
+					float pos[3];
+					actor.GetWorldPosition(pos);
+					pos[2] = 0;
+					int numFX = fx->NumberFXs();
+					for (int j = 0; j < numFX; j++) {
+						fx_sub = fx->GetFX(j);
+						char *parent_name = fx_sub->GetParentName();
+						OBJECTid oid = actor.GetBoneObject( parent_name );
+						if( oid != FAILED_ID )
+						{
+							fx_sub->SetParent( oid );
+							//pos[0] = pos[1] = pos[2] = 0;
+							//fx_sub->InitPosition(pos);
+						}
+						else
+						{
+							fx_sub->InitPosition(pos);
+						}
+					}
+
+					FXcenter::playFX( fx );
+
+		if( counter == 0 )
+		{
+			audio.Object(AllAudio::donzo_haha);
+			audio.Play(ONCE);
+		}
+		counter = (counter+1)%10;
+		audio.Object(AllAudio::Door03);
+		audio.Play(ONCE);
 	}
 }

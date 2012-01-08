@@ -40,7 +40,7 @@ AUDIOid AllAudio::donzo_damaged_light = 0;
 AUDIOid AllAudio::donzo_damaged_medium = 0;
 AUDIOid AllAudio::donzo_damaged_heavy = 0;
 AUDIOid AllAudio::donzo_damaged_miserable = 0;
-
+AUDIOid AllAudio::donzo_haha = 0;
 
 AUDIOid AllAudio::weapon_attack = 0;
 AUDIOid AllAudio::weapon_charge_attack = 0;
@@ -62,6 +62,7 @@ AUDIOid AllAudio::Explosion5 = 0;
 AUDIOid AllAudio::Light03 = 0;
 AUDIOid AllAudio::Darkness02 = 0;
 AUDIOid AllAudio::Wind5 = 0;
+AUDIOid AllAudio::Door03 = 0;
 
 
 AUDIOid AllAudio::charge_voice1 = 0;
@@ -117,6 +118,7 @@ eF3DFX* AllFx::DonzoHeavy3 = NULL;
 eF3DFX* AllFx::DonzoDamageRight = NULL;
 eF3DFX* AllFx::runsmoke = NULL;
 eF3DFX* AllFx::DonzoAttackH = NULL;
+eF3DFX* AllFx::DonzoDefence = NULL;
 WORLDid AllFx::gID = 0;
 
 eF3DFX* AllFx::getFX(eF3DFX* fx, SCENEid sID){
@@ -256,6 +258,10 @@ void FXcenter::initial(WORLDid gID, SCENEid sID)
 	AllFx::DonzoAttackH =  new eF3DFX(sID);
 	AllFx::DonzoAttackH->SetWorkPath("Data\\NTU4\\FXs");
 	AllFx::DonzoAttackH->Load("DonzoAttackH");
+
+	AllFx::DonzoDefence =  new eF3DFX(sID);
+	AllFx::DonzoDefence->SetWorkPath("Data\\NTU4\\FXs");
+	AllFx::DonzoDefence->Load("DonzoDefence");
 }
 void FXcenter::playFX( eF3DFX* fx )
 {
@@ -489,7 +495,9 @@ void loadAll( WORLDid gID, SCENEid sID )
 	audio.Object(AllAudio::donzo_damaged_miserable);
 	audio.Load("donzo_damaged_miserable");
 
-
+	AllAudio::donzo_haha = gw.CreateAudio();
+	audio.Object(AllAudio::donzo_haha);
+	audio.Load("donzo_haha");
 		//weapon
 	AllAudio::weapon_attack = gw.CreateAudio();
 	audio.Object(AllAudio::weapon_attack);
@@ -563,6 +571,10 @@ void loadAll( WORLDid gID, SCENEid sID )
 	AllAudio::Wind5 = gw.CreateAudio();
 	audio.Object(AllAudio::Wind5);
 	audio.Load("Wind5");
+
+	AllAudio::Door03 = gw.CreateAudio();
+	audio.Object(AllAudio::Door03);
+	audio.Load("026-Door03");
 		//mix
 	AllAudio::charge_voice1 = gw.CreateAudio();
 	audio.Object(AllAudio::charge_voice1);
