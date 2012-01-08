@@ -49,6 +49,7 @@ public:
 	static AUDIOid donzo_damaged_medium;
 	static AUDIOid donzo_damaged_heavy;
 	static AUDIOid donzo_damaged_miserable;
+	static AUDIOid donzo_haha;
 //weapon sound
 	static AUDIOid weapon_attack;
 	static AUDIOid weapon_charge_attack;
@@ -70,6 +71,7 @@ public:
 	static AUDIOid Light03;
 	static AUDIOid Darkness02;
 	static AUDIOid Wind5;
+	static AUDIOid Door03;
 //mix
 	static AUDIOid charge_voice1;
 };
@@ -103,6 +105,7 @@ public:
 	static eF3DFX* DonzoDamageRight;
 	static eF3DFX* runsmoke;
 	static eF3DFX* DonzoAttackH;
+	static eF3DFX* DonzoDefence;
 private:
 	
 };
