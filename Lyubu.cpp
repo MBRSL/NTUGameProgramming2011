@@ -8,6 +8,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 
 	HP_MAX = 2000;
 	HP = HP_MAX;
+	dieFlag = 0;
 
 	pos_begin[0]=3600.0;
 	pos_begin[1]=-3900.0;
@@ -26,7 +27,6 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	FnSprite sp;
 	FnScene scene2D;
 	gw.SetTexturePath(AllImg::ImgDirAddr);
-
 	s2D = gw.CreateScene(1);
 	scene2D.Object(s2D);
 	scene2D.SetSpriteWorldSize(800, 600);
@@ -38,7 +38,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 
 		faceID = scene2D.CreateSprite();
 		sp.Object(faceID);
-		sp.SetRectArea(NULL, face_length, face_height, NULL, "face1", 0, TRUE, 0, 0, 0);   // load an image & resize it
+		sp.SetRectArea(NULL, face_length, face_height, NULL, "face1", 0, TRUE, 0, 255, 0);   // load an image & resize it
 		sp.SetRectPosition(face_x, face_y, 0);   // put at (200, 200) position
 
 		face.Object(faceID);
@@ -50,7 +50,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 
 		lifebar_frameID = scene2D.CreateSprite();
 		sp.Object(lifebar_frameID);
-		sp.SetRectArea(NULL, lifebar_length, lifebar_height, NULL, "lifebar2", 0, TRUE, 0, 0, 0);
+		sp.SetRectArea(NULL, lifebar_length, lifebar_height, NULL, "lifebar2", 0, TRUE, 0, 255, 0);
 		sp.SetRectPosition(lifebar_x, lifebar_y, 0);
 
 		lifebarID = scene2D.CreateSprite();
@@ -74,27 +74,51 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 
 		//killnum
 		
-		killnum_x = 700;
+		killnum_x = 680;
 		killnum_y = 90;
 		killnum_length = 60;
 		killnum_height = 80;
 
 		killnum0ID = scene2D.CreateSprite();
 		killnum0.Object(killnum0ID);		
-		killnum0.SetRectArea(NULL, killnum_length, killnum_height, NULL, "0", 0, TRUE, 0, 1, 3);
-		killnum0.SetRectPosition(killnum_x, killnum_y, 0);
+	//	killnum0.SetRectArea(NULL, killnum_length, killnum_height, NULL, "0", 0, TRUE, 0, 0, 0);
+	//	killnum0.SetRectPosition(killnum_x, killnum_y, 0);
 		
 		killnum1ID = scene2D.CreateSprite();
 		killnum1.Object(killnum1ID);
-		killnum1.SetRectArea(NULL, killnum_length, killnum_height, NULL, "0", 0, TRUE, 0, 1, 3);
-		killnum1.SetRectPosition(killnum_x-60, killnum_y, 0);
+	//	killnum1.SetRectArea(NULL, killnum_length, killnum_height, NULL, "0", 0, TRUE, 0, 0, 0);
+	//	killnum1.SetRectPosition(killnum_x-50, killnum_y, 0);
         
 		killnum2ID = scene2D.CreateSprite();
 		killnum2.Object(killnum2ID);
-		killnum2.SetRectArea(NULL, killnum_length, killnum_height, NULL, "0", 0, TRUE, 0, 1, 3);
-		killnum2.SetRectPosition(killnum_x-120, killnum_y, 0);
+	//	killnum2.SetRectArea(NULL, killnum_length, killnum_height, NULL, "0", 0, TRUE, 0, 0, 0);
+	//	killnum2.SetRectPosition(killnum_x-100, killnum_y, 0);
 		
+		killword_x =730;
+		killword_y =90;
+		killword_length=60;
+		killword_height=37;
+		killwordID = scene2D.CreateSprite();
+		killword.Object(killwordID);
+		killword.SetRectArea(NULL, killword_length, killword_height, NULL, "kill", 0, TRUE, 0, 1, 1);
+		killword.SetRectPosition(killword_x , killword_y, 0);
 
+		
+		gameover_x = 50;
+		gameover_y = 350;
+		gameover_length = 682;
+		gameover_height = 106;
+
+		gameoverID = scene2D.CreateSprite();
+		gameover.Object(gameoverID);	
+		
+		gamewin_x = 250;
+		gamewin_y = 350;
+		gamewin_length = 348;
+		gamewin_height = 124;
+
+		gamewinID = scene2D.CreateSprite();
+		gamewin.Object(gamewinID);	
 
 	//2D
 
@@ -531,13 +555,13 @@ void Lyubu::renderKillnum()
 			killnum0.SetRectArea(NULL, killnum_length, killnum_height, NULL, path, 0, TRUE, 0, 1, 3);
 			killnum0.SetRectPosition(killnum_x, killnum_y, 0);
         }
-        else if(digit == 1 ){
+        else if(digit == 1 && KILLNUM>=10 ){
 			killnum1.SetRectArea(NULL, killnum_length, killnum_height, NULL, path, 0, TRUE, 0, 1, 3);
-			killnum1.SetRectPosition(killnum_x-60, killnum_y, 0);
+			killnum1.SetRectPosition(killnum_x-50, killnum_y, 0);
         }
-        else if(digit == 2 ){
+        else if(digit == 2 && KILLNUM>=100 ){
 			killnum2.SetRectArea(NULL, killnum_length, killnum_height, NULL, path, 0, TRUE, 0, 1, 3);
-			killnum2.SetRectPosition(killnum_x-120, killnum_y, 0);
+			killnum2.SetRectPosition(killnum_x-100, killnum_y, 0);
         }
         		        
          kill /= 10;
@@ -625,6 +649,7 @@ void Lyubu::damaged( int attack_pt, ACTORid attacker, float angle )
 		gw.SetTexturePath(AllImg::ImgDirAddr);
 		face.SetRectArea(NULL, face_length, face_height, NULL, "face2", 0, TRUE, 1, 0, 0);   // load an image & resize it
 		face.SetRectPosition(face_x, face_y, 0);   // put at (200, 200) position
+		
 	}
 	else if( HP <= 0 )
 	{
@@ -633,6 +658,11 @@ void Lyubu::damaged( int attack_pt, ACTORid attacker, float angle )
 		gw.SetTexturePath(AllImg::ImgDirAddr);
 		face.SetRectArea(NULL, face_length, face_height, NULL, "face3", 0, TRUE, 1, 0, 0);   // load an image & resize it
 		face.SetRectPosition(face_x, face_y, 0);   // put at (200, 200) position
+		dieFlag = 1;
+		gameover.SetRectArea(NULL,gameover_length, gameover_height, NULL, "gameover", 0, TRUE, 0, 1, 1);
+		gameover.SetRectPosition(gameover_x , gameover_y, 0);
+		AllMusic::play( AllMusic::end, ONCE );
+		
 	}
 	else if(attack_pt > 100)
 	{
@@ -669,4 +699,12 @@ void Lyubu::actionChangeSignal( OurAction *last_action, OurAction *current_actio
 		skill.SetRectPosition(skill_x, skill_y, 0);
 		skill.Show(TRUE);
 	}
+}
+
+void Lyubu::winDeal()
+{
+	gw.SetTexturePath(AllImg::ImgDirAddr);
+	gamewin.SetRectArea(NULL,gamewin_length, gamewin_height, NULL, "gamewin", 0, TRUE, 0, 1, 1);
+	gamewin.SetRectPosition(gamewin_x , gamewin_y, 0);
+	
 }

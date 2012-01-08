@@ -8,7 +8,7 @@ Donzo::Donzo( WORLDid gID, SCENEid sID )
 
 	HP_MAX = 1000;
 	HP = HP_MAX;
-
+	winFlag = 0;
 	pos_begin[0]=3469.0;
 	pos_begin[1]=-3208.0;
 	pos_begin[2]=1000.0f;
@@ -320,7 +320,9 @@ void Donzo::damaged( int attack_pt, ACTORid attacker, float angle )
 	{
 		HP = 0;
 		sendAction(ourDieAction);
+		KILLNUM++;
 		AllMusic::play( AllMusic::win, ONCE );
+		winFlag = 1;
 	}
 	else{
 		if( angle < 180 )

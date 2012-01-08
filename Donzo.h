@@ -16,6 +16,7 @@ class DonzoAction : public Action_type
 class Donzo : public OurEnemyActor{
 	public:
 		static const float ATTACK_RATE;
+		int winFlag;
 		//var
 		//FnActor actor;
 		float pos_begin[3];

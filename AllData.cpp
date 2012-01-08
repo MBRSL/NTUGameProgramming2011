@@ -296,6 +296,7 @@ MEDIAid AllMusic::current_music = 0;
 MEDIAid AllMusic::stage = 0;
 MEDIAid AllMusic::warning = 0;
 MEDIAid AllMusic::win = 0;
+MEDIAid AllMusic::end = 0;
 void AllMusic::initial( WORLDid gID )
 {
 	FnWorld gw;
@@ -308,6 +309,7 @@ void AllMusic::initial( WORLDid gID )
 	stage = FyCreateMediaPlayer(0, "stage", 0, 0, 0, 0);
 	warning = FyCreateMediaPlayer(0, "warning", 0, 0, 0, 0);
 	win = FyCreateMediaPlayer(0, "win", 0, 0, 0, 0);
+	end = FyCreateMediaPlayer(0, "end", 0, 0, 0, 0);
 }
 
 void AllMusic::play( MEDIAid bgm, int type )

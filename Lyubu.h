@@ -50,7 +50,7 @@ class Lyubu : public OurActor{
 		float pos_begin[3];
 		float angle_begin;
 		float MOVE_SPEED, MOVE_ANGLE;
-
+		int dieFlag;
 		//method
 		Lyubu( WORLDid , SCENEid );
 		void damaged(int , ACTORid , float );
@@ -58,19 +58,26 @@ class Lyubu : public OurActor{
 		void dealKey();
 		void Rotate(int degree, float cameraPos[]);
 		void actionChangeSignal( OurAction *last_action, OurAction *current_action );
-
+		void winDeal();
 		//2D
 		SCENEid s2D;
-		FnSprite lifebar, skill, face, killnum0, killnum1, killnum2;
-		OBJECTid lifebar_frameID, lifebarID, faceID, skillID, killnum0ID, killnum1ID, killnum2ID;
+		FnSprite lifebar, skill, face, killnum0, killnum1, killnum2, killword, gameover, gamewin;
+		OBJECTid lifebar_frameID, lifebarID, faceID, skillID, killnum0ID, killnum1ID, killnum2ID, killwordID, gameoverID, gamewinID;
 		int lifebar_x, lifebar_y;
 		int skill_x, skill_y;
 		int face_x, face_y;
 		int killnum_x, killnum_y;
+		int killword_x,killword_y;
+		int gameover_x,gameover_y;
+		int gamewin_x,gamewin_y;
+
 		float lifebar_length, lifebar_height;
 		float skill_length, skill_height;
 		float face_length, face_height;
 		float killnum_length, killnum_height;
+		float killword_length, killword_height;
+		float gameover_length, gameover_height;
+		float gamewin_length, gamewin_height;
 		
 		
 		

@@ -137,6 +137,7 @@ public:
 	static MEDIAid stage;
 	static MEDIAid warning;
 	static MEDIAid win;
+	static MEDIAid end;
 
 	static void play( MEDIAid bgm, int type );
 	static void initial( WORLDid gID );

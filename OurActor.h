@@ -12,7 +12,7 @@ public:
 	int HP_MAX;
 	int HP;
 	static int KILLNUM;
-	
+
 	//method
 	OurActor();
 	virtual void damaged( int attack_pt, ACTORid attacker, float angle ) = 0;
