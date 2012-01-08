@@ -36,6 +36,9 @@ Robber02::Robber02( WORLDid gID, SCENEid sID )
 	arrow.Object(arrowID);
 	arrow.Load("arrowYellow");
 
+
+	
+
 	//-------action---------
 	//IDLE
 	ourIdleAction = new OurAction();
@@ -258,6 +261,7 @@ void Robber02::damaged( int attack_pt, ACTORid attacker, float angle )
 	if( HP <= 0 )
 	{
 		sendAction(ourDieAction);
+		KILLNUM++;
 	}
 	else
 	{

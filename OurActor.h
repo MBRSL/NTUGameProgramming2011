@@ -11,6 +11,7 @@ public:
 	ACTORid aID;
 	int HP_MAX;
 	int HP;
+	static int KILLNUM;
 	
 	//method
 	OurActor();

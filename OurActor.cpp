@@ -3,6 +3,7 @@
 #include "function.h"
 #include "AllData.h"
 
+int OurActor::KILLNUM = 0;
 //OurActControl
 OurActor::OurActor()
 {

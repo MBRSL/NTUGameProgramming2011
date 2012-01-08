@@ -29,5 +29,7 @@ class Robber02 : public OurEnemyActor{
 		bool attackAgent(ACTORid enemyID);
 		void AI(ACTORid enemyID, EnemyTeam **team,  int teamCount);
 		void damaged(int, ACTORid, float);
+
+		
 };
 #endif

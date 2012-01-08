@@ -38,7 +38,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 
 		faceID = scene2D.CreateSprite();
 		sp.Object(faceID);
-		sp.SetRectArea(NULL, face_length, face_height, NULL, "face1", 0, TRUE, 0, 1, 3);   // load an image & resize it
+		sp.SetRectArea(NULL, face_length, face_height, NULL, "face1", 0, TRUE, 0, 0, 0);   // load an image & resize it
 		sp.SetRectPosition(face_x, face_y, 0);   // put at (200, 200) position
 
 		face.Object(faceID);
@@ -50,7 +50,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 
 		lifebar_frameID = scene2D.CreateSprite();
 		sp.Object(lifebar_frameID);
-		sp.SetRectArea(NULL, lifebar_length, lifebar_height, NULL, "lifebar2", 0, TRUE, 13, 0, 0);
+		sp.SetRectArea(NULL, lifebar_length, lifebar_height, NULL, "lifebar2", 0, TRUE, 0, 0, 0);
 		sp.SetRectPosition(lifebar_x, lifebar_y, 0);
 
 		lifebarID = scene2D.CreateSprite();
@@ -71,6 +71,31 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		//sp.SetRectPosition(skill_x, skill_y, 0);
 		
 		skill.Object(skillID);
+
+		//killnum
+		
+		killnum_x = 700;
+		killnum_y = 90;
+		killnum_length = 60;
+		killnum_height = 80;
+
+		killnum0ID = scene2D.CreateSprite();
+		killnum0.Object(killnum0ID);		
+		killnum0.SetRectArea(NULL, killnum_length, killnum_height, NULL, "0", 0, TRUE, 0, 1, 3);
+		killnum0.SetRectPosition(killnum_x, killnum_y, 0);
+		
+		killnum1ID = scene2D.CreateSprite();
+		killnum1.Object(killnum1ID);
+		killnum1.SetRectArea(NULL, killnum_length, killnum_height, NULL, "0", 0, TRUE, 0, 1, 3);
+		killnum1.SetRectPosition(killnum_x-60, killnum_y, 0);
+        
+		killnum2ID = scene2D.CreateSprite();
+		killnum2.Object(killnum2ID);
+		killnum2.SetRectArea(NULL, killnum_length, killnum_height, NULL, "0", 0, TRUE, 0, 1, 3);
+		killnum2.SetRectPosition(killnum_x-120, killnum_y, 0);
+		
+
+
 	//2D
 
 
@@ -490,9 +515,42 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 
 	actor.MakeCurrentAction(0, NULL, ourIdleAction->actID);
 }
+void Lyubu::renderKillnum()
+{
+	int i,digitnum,digit;
+	char path[10]={0};
+	int kill = KILLNUM;
+    for(i = 0; i < 3; i++){
+        digitnum =  kill % 10;
+        digit = i;
+		sprintf(path,"%d",digitnum);
+		gw.SetTexturePath(AllImg::ImgDirAddr);
+		if(digit == 0)
+		{
+              // load an image & resize it
+			killnum0.SetRectArea(NULL, killnum_length, killnum_height, NULL, path, 0, TRUE, 0, 1, 3);
+			killnum0.SetRectPosition(killnum_x, killnum_y, 0);
+        }
+        else if(digit == 1 ){
+			killnum1.SetRectArea(NULL, killnum_length, killnum_height, NULL, path, 0, TRUE, 0, 1, 3);
+			killnum1.SetRectPosition(killnum_x-60, killnum_y, 0);
+        }
+        else if(digit == 2 ){
+			killnum2.SetRectArea(NULL, killnum_length, killnum_height, NULL, path, 0, TRUE, 0, 1, 3);
+			killnum2.SetRectPosition(killnum_x-120, killnum_y, 0);
+        }
+        		        
+         kill /= 10;
+    }
+
+}
+
 void Lyubu::dealKey()
 {
 	static bool Zpressed=false, Xpressed=false;
+	
+	
+	
 	if (FyCheckHotKeyStatus(FY_Z) ) {
 		if(!Zpressed)
 		{
