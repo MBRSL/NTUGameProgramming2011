@@ -29,7 +29,8 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	gw.SetTexturePath(AllImg::ImgDirAddr);
 	s2D = gw.CreateScene(1);
 	scene2D.Object(s2D);
-	scene2D.SetSpriteWorldSize(800, 600);
+	//scene2D.SetSpriteWorldSize(800, 600);
+	scene2D.SetSpriteWorldSize(1024, 768);
 		//face
 		face_x = 10;
 		face_y = 10;
@@ -48,6 +49,7 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		lifebar_length = 550;
 		lifebar_height = 143;
 
+
 		lifebar_frameID = scene2D.CreateSprite();
 		sp.Object(lifebar_frameID);
 		sp.SetRectArea(NULL, lifebar_length, lifebar_height, NULL, "lifebar2", 0, TRUE, 0, 255, 0);
@@ -60,10 +62,16 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 
 		lifebar.Object(lifebarID);
 		//skill
+		/*
 		skill_length=400;
 		skill_height=140;
 		skill_x=200;
 		skill_y=450;
+		*/
+		skill_length=400;
+		skill_height=140;
+		skill_x=312;
+		skill_y=600;
 
 		skillID = scene2D.CreateSprite();
 		sp.Object(skillID);
@@ -73,9 +81,14 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		skill.Object(skillID);
 
 		//killnum
-		
+		/*
 		killnum_x = 680;
 		killnum_y = 90;
+		killnum_length = 60;
+		killnum_height = 80;
+		*/
+		killnum_x = 880;
+		killnum_y = 30;
 		killnum_length = 60;
 		killnum_height = 80;
 
@@ -94,8 +107,8 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 	//	killnum2.SetRectArea(NULL, killnum_length, killnum_height, NULL, "0", 0, TRUE, 0, 0, 0);
 	//	killnum2.SetRectPosition(killnum_x-100, killnum_y, 0);
 		
-		killword_x =730;
-		killword_y =90;
+		killword_x =930;
+		killword_y =30;
 		killword_length=60;
 		killword_height=37;
 		killwordID = scene2D.CreateSprite();
@@ -103,17 +116,27 @@ Lyubu::Lyubu( WORLDid gID, SCENEid sID )
 		killword.SetRectArea(NULL, killword_length, killword_height, NULL, "kill", 0, TRUE, 0, 1, 1);
 		killword.SetRectPosition(killword_x , killword_y, 0);
 
-		
+/*		
 		gameover_x = 50;
 		gameover_y = 350;
+		gameover_length = 682;
+		gameover_height = 106;
+*/
+		gameover_x = 171;
+		gameover_y = 500;
 		gameover_length = 682;
 		gameover_height = 106;
 
 		gameoverID = scene2D.CreateSprite();
 		gameover.Object(gameoverID);	
-		
+		/*
 		gamewin_x = 250;
 		gamewin_y = 350;
+		gamewin_length = 348;
+		gamewin_height = 124;
+		*/
+		gamewin_x = 338;
+		gamewin_y = 500;
 		gamewin_length = 348;
 		gamewin_height = 124;
 

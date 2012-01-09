@@ -18,7 +18,8 @@ Camera3rd::Camera3rd(WORLDid gID, SCENEid sID, OBJECTid terrainID, Lyubu *lyubu)
 	scene.Object(sID);
 
 	//viewport
-	vID = gw.CreateViewport(0, 0, 800, 600);
+	//vID = gw.CreateViewport(0, 0, 800, 600);
+	vID = gw.CreateViewport(0, 0, 1024, 768);
 	vp.Object(vID);
 	vp.SetBackgroundColor(1, 0.6f, 0.2f,0.5);
 
